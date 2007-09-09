@@ -1,0 +1,3165 @@
+Model {
+  Name			  "floating_2_bodies_acc"
+  Version		  6.3
+  MdlSubVersion		  0
+  GraphicalInterface {
+    NumRootInports	    0
+    NumRootOutports	    0
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.190"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+  }
+  SavedCharacterEncoding  "windows-1251"
+  PreLoadFcn		  "Body_Shv_Double_0661"
+  SaveDefaultBlockParams  on
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  InitFcn		  "mech_slider_open_ShV(gcs);"
+  Created		  "Wed Nov 23 14:02:45 2005"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "Alex"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sat Jan 27 22:12:01 2007"
+  ModelVersionFormat	  "1.%<AutoIncrement:190>"
+  ConfigurationManager	  "None"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  BufferReuse		  on
+  StrictBusMsg		  "Warning"
+  ProdHWDeviceType	  "32-bit Generic"
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      1
+      Version		      "1.1.0"
+      Array {
+	Type			"Handle"
+	Dimension		8
+	Simulink.SolverCC {
+	  $ObjectID		  2
+	  Version		  "1.1.0"
+	  StartTime		  "0.0"
+	  StopTime		  "inf"
+	  AbsTol		  "1e-6"
+	  FixedStep		  "0.01"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  RelTol		  "1e-6"
+	  SolverMode		  "Auto"
+	  Solver		  "ode1"
+	  SolverName		  "ode1"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  RateTranMode		  "Deterministic"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  3
+	  Version		  "1.1.0"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  on
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveFormat		  "Array"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SignalLogging		  on
+	  InspectSignalLogs	  off
+	  SaveTime		  on
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  Refine		  "1"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  4
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    5
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "InitFltsAndDblsToZero"
+	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    PropName		    "DisabledProps"
+	  }
+	  Version		  "1.1.0"
+	  BlockReduction	  on
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs on
+	  InlineParams		  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnforceIntegerDowncast  on
+	  ExpressionFolding	  on
+	  FoldNonRolledExpr	  on
+	  LocalBlockOutputs	  on
+	  ParameterPooling	  on
+	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  UseTempVars		  off
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  on
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  BufferReusableBoundary  on
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  5
+	  Version		  "1.1.0"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  CheckSSInitialOutputMsg on
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "TryResolveAllWithWarning"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  SolverPrmCheckMsg	  "warning"
+	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
+	  MultiTaskDSMMsg	  "warning"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "Use local settings"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
+	  ModelReferenceSimTargetVerbose off
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  6
+	  Version		  "1.1.0"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdIntDivRoundTo	  "Undefined"
+	  ProdEndianess		  "Unspecified"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdHWDeviceType	  "32-bit Generic"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetShiftRightIntArith on
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "Specified"
+	  TargetUnknown		  off
+	  ProdEqTarget		  on
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  7
+	  Version		  "1.1.0"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  CheckModelReferenceTargetMessage "error"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  8
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    "IncludeHyperlinkInReport"
+	    PropName		    "DisabledProps"
+	  }
+	  Version		  "1.1.0"
+	  SystemTargetFile	  "grt.tlc"
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  TemplateMakefile	  "grt_default_tmf"
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ConfigAtBuild		  off
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  TargetLang		  "C"
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      9
+	      Array {
+		Type			"Cell"
+		Dimension		9
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"InsertBlockDesc"
+		Cell			"SFDataObjDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		PropName		"DisabledProps"
+	      }
+	      Version		      "1.1.0"
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      IgnoreCustomStorageClasses on
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      31
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      IncDataTypeInIds	      off
+	      PrefixModelToSubsysFcnNames on
+	      CustomSymbolStr	      "$R$N$M"
+	      MangleLength	      1
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      SimulinkBlockComments   on
+	      EnableCustomComments    off
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	    }
+	    Simulink.GRTTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      10
+	      Array {
+		Type			"Cell"
+		Dimension		12
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"CombineOutputUpdateFcns"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"MultiInstanceERTCode"
+		Cell			"PurelyIntegerCode"
+		Cell			"SupportNonFinite"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		Cell			"SupportContinuousTime"
+		Cell			"SupportNonInlinedSFcns"
+		PropName		"DisabledProps"
+	      }
+	      Version		      "1.1.0"
+	      TargetFcnLib	      "ansi_tfl_tmw.mat"
+	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
+	      GenFloatMathFcnCalls    "ANSI_C"
+	      UtilityFuncGeneration   "Auto"
+	      GenerateFullHeader      on
+	      GenerateSampleERTMain   off
+	      IsPILTarget	      off
+	      ModelReferenceCompliant on
+	      IncludeMdlTerminateFcn  on
+	      CombineOutputUpdateFcns off
+	      SuppressErrorStatus     off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      on
+	      MultiInstanceERTCode    off
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      ExtMode		      off
+	      ExtModeStaticAlloc      off
+	      ExtModeTesting	      off
+	      ExtModeStaticAllocSize  1000000
+	      ExtModeTransport	      0
+	      ExtModeMexFile	      "ext_comm"
+	      RTWCAPISignals	      off
+	      RTWCAPIParams	      off
+	      RTWCAPIStates	      off
+	      GenerateASAP2	      off
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	MECH.SimMechanicsCC {
+	  $ObjectID		  11
+	  Version		  "1.1.0"
+	  Name			  "SimMechanics"
+	  WarnOnRedundantConstraints on
+	  WarnOnSingularInitialAssembly	off
+	  ShowCutJoints		  off
+	  VisOnUpdateDiagram	  on
+	  VisDuringSimulation	  on
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      SimulationMode	      "normal"
+      CurrentDlgPage	      "Solver"
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    1
+  }
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "arial"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Actuator
+      SubClassName	      "unknown"
+      PortType		      "blob"
+    }
+    Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      OutDataTypeMode	      "Inherit from 'Constant value'"
+      OutDataType	      "sfix(16)"
+      ConRadixGroup	      "Use specified scaling"
+      OutScaling	      "2^0"
+      SampleTime	      "inf"
+    }
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Display
+      Format		      "short"
+      Decimation	      "10"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      From
+      IconDisplay	      "Tag"
+    }
+    Block {
+      BlockType		      Fcn
+      Expr		      "sin(u[1])"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParameterDataTypeMode   "Same as input"
+      ParameterDataType	      "sfix(16)"
+      ParameterScalingMode    "Best Precision: Matrix-wise"
+      ParameterScaling	      "2^0"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Goto
+      IconDisplay	      "Tag"
+    }
+    Block {
+      BlockType		      Ground
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchByCopyingInsideSignal off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Integrator
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      AbsoluteTolerance	      "auto"
+      IgnoreLimit	      off
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      PMComponent
+      SubClassName	      "unknown"
+    }
+    Block {
+      BlockType		      PMIOPort
+    }
+    Block {
+      BlockType		      Scope
+      ModelBased	      off
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-5"
+      YMax		      "5"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Selector
+      InputType		      "Vector"
+      IndexMode		      "One-based"
+      ElementSrc	      "Internal"
+      Elements		      "1"
+      RowSrc		      "Internal"
+      Rows		      "1"
+      ColumnSrc		      "Internal"
+      Columns		      "1"
+      InputPortWidth	      "-1"
+      IndexIsStartValue	      off
+      OutputPortSize	      "1"
+    }
+    Block {
+      BlockType		      Sensor
+      SubClassName	      "unknown"
+      PortType		      "blob"
+    }
+    Block {
+      BlockType		      "S-Function"
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      on
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      MinMaxOverflowLogging   "UseLocalSettings"
+    }
+    Block {
+      BlockType		      Sum
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      InputSameDT	      on
+      OutDataTypeMode	      "Same as first input"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Terminator
+    }
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "arial"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "arial"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "floating_2_bodies_acc"
+    Location		    [285, 442, 1042, 730]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      SubSystem
+      Name		      "Body_01"
+      Ports		      [0, 4, 0, 0, 0, 1, 3]
+      Position		      [430, 33, 535, 187]
+      TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      MaskHideContents	      off
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"Body_01"
+	Location		[444, 363, 1096, 836]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Reference
+	  Name			  "B01_Joint"
+	  Ports			  [0, 0, 0, 0, 0, 5, 5]
+	  Position		  [145, 38, 195, 92]
+	  SourceBlock		  "mblibv1/Joints/Custom Joint"
+	  SourceType		  "msb"
+	  PhysicalDomain	  "mechanical"
+	  SubClassName		  "custom_joint"
+	  LeftPortType		  "blob"
+	  RightPortType		  "blob"
+	  LConnTagsString	  "__newl0|SA1|SA2|SA3|SA4"
+	  RConnTagsString	  "__newr0|SA1|SA2|SA3|SA4"
+	  NumSAPorts		  "8"
+	  CutJoint		  "off"
+	  MarkAsCut		  "off"
+	  Primitives		  "revolute_revolute_revolute"
+	  PrimitiveProps	  "R3$WORLD$[0 0 1]$revolute#R1$WORLD$[1 0 0]$"
+"revolute#R2$WORLD$[0 1 0]$revolute"
+	  ClassName		  "Joint"
+	  DialogClass		  "JointBlock"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "B01_Joint IC"
+	  Ports			  [0, 0, 0, 0, 0, 0, 1]
+	  Position		  [260, 95, 300, 135]
+	  Orientation		  "left"
+	  SourceBlock		  "mblibv1/Sensors & \nActuators/Joint Initial"
+" Condition"
+	  SourceType		  "msb"
+	  ShowPortLabels	  on
+	  PhysicalDomain	  "mechanical"
+	  ClassName		  "InitialCondition"
+	  DialogClass		  "InitialConditionBlock"
+	  InitialConditions	  "P1$false$0$m$rad$0$m/s$rad/s#P2$false$0$m$r"
+"ad$0$m/s$rad/s#P3$false$0$m$rad$0$m/s$rad/s#R1$true$X_Ang_Correction$m$deg$Bo"
+"dy_01_IVel(1)$m/s$rad/s#R2$true$Body_01_IPos(2)$m$deg$Body_01_IVel(2)$m/s$rad"
+"/s#R3$true$Body_01_IPos(3)$m$deg$Body_01_IVel(3)$m/s$rad/s#S$false$0$m$rad$0$"
+"m/s$rad/s"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Body_01"
+	  Ports			  [0, 0, 0, 0, 0, 1, 4]
+	  Position		  [410, 16, 500, 94]
+	  BackgroundColor	  "green"
+	  SourceBlock		  "mblibv1/Bodies/Body"
+	  SourceType		  "msb"
+	  PhysicalDomain	  "mechanical"
+	  SubClassName		  "Unknown"
+	  LeftPortType		  "workingframe"
+	  RightPortType		  "workingframe"
+	  LConnTagsString	  "CS1"
+	  RConnTagsString	  "CS2|CS3|CS4|CS5"
+	  ClassName		  "Body"
+	  DialogClass		  "MechanicalBodyBlock"
+	  Mass			  "Body_01_Mass"
+	  MassUnits		  "kg"
+	  InertiaUnits		  "kg*m^2"
+	  Inertia		  "Body_01_Inertia"
+	  Shape			  "Cylinder"
+	  ShapeDims		  "[1 1]"
+	  ShapeUnits		  "m"
+	  ShapeUse		  "false"
+	  Density		  "1"
+	  DensityUnits		  "kg/m^3"
+	  DensityUse		  "false"
+	  CG			  "Left$CG$-Body_01_Size$CS1$CS1$m$[0 0 0]$Eul"
+"er X-Y-Z$deg$ADJOINING$false"
+	  WorkingFrames		  "Left$CS1$[0 0 0]$ADJOINING$ADJOINING$m$[0 0"
+" 0]$Euler X-Y-Z$deg$WORLD$true#Right$CS2$-Body_01_Size$CG$CG$m$[0 0 0]$Euler "
+"X-Y-Z$deg$WORLD$true#Right$CS3$[-0.5*Body_01_Size(2) -Body_01_Size(2) 0]$CG$C"
+"G$m$[0 0 0]$Euler X-Y-Z$deg$WORLD$true#Right$CS4$[0.5*Body_01_Size(2) -Body_0"
+"1_Size(2) 0]$CG$CG$m$[0 0 0]$Euler X-Y-Z$deg$WORLD$true#Right$CS5$[0 -Body_01"
+"_Size(2) -0.2*Body_01_Size(2)]$CG$CG$m$[0 0 0]$Euler X-Y-Z$deg$WORLD$true"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Joint Sensor"
+	  Ports			  [0, 1, 0, 0, 0, 1]
+	  Position		  [415, 125, 455, 165]
+	  SourceBlock		  "mblibv1/Sensors & \nActuators/Joint Sensor"
+	  SourceType		  "msb"
+	  ShowPortLabels	  on
+	  PhysicalDomain	  "Mechanical"
+	  PortType		  "blob"
+	  Muxed			  "on"
+	  Pose			  "off"
+	  Angle			  "off"
+	  AngleUnits		  "deg"
+	  ArcVelocity		  "on"
+	  ArcVelocityUnits	  "deg/s"
+	  ArcAcceleration	  "off"
+	  ArcAccelerationUnits	  "deg/s^2"
+	  CoordPosition		  "on"
+	  CoordPositionUnits	  "m"
+	  Velocity		  "off"
+	  VelocityUnits		  "m/s"
+	  Acceleration		  "off"
+	  AccelerationUnits	  "m/s^2"
+	  Quaternion		  "on"
+	  QuaternionDT		  "off"
+	  QuaternionDDT		  "off"
+	  QuaternionUnits	  "off"
+	  OutputVector		  "[ 1 ]"
+	  ActiveIO		  "on"
+	  Width			  "1"
+	  ClassName		  "JointSensor"
+	  DialogClass		  "MechanicalSensorBlock"
+	  Primitive		  "R3"
+	  Force			  "off"
+	  ForceUnits		  "N"
+	  Torque		  "off"
+	  TorqueUnits		  "N-m"
+	  ReferenceFrame	  "Absolute (INERTIAL)"
+	  ReactionSensedSide	  "Base"
+	  ReactionReferenceFrame  "Local (Body CS)"
+	  ReactionForce		  "off"
+	  ReactionForceUnits	  "N"
+	  ReactionMoment	  "off"
+	  ReactionMomentUnits	  "N-m"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  Ports			  [3, 1]
+	  Position		  [515, 286, 520, 324]
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  Ports			  [3, 1]
+	  Position		  [520, 346, 525, 384]
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux2"
+	  Ports			  [3, 1]
+	  Position		  [500, 406, 505, 444]
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "X_Rotation_Subs"
+	  Ports			  [0, 3, 0, 0, 0, 1, 1]
+	  Position		  [140, 207, 180, 268]
+	  BackgroundColor	  "red"
+	  TreatAsAtomicUnit	  off
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  MaskHideContents	  off
+	  System {
+	    Name		    "X_Rotation_Subs"
+	    Location		    [534, 147, 1140, 509]
+	    Open		    on
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      Position		      [250, 215, 280, 245]
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      Position		      [555, 190, 585, 220]
+	      Orientation	      "left"
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Continuous Angle"
+	      Tag		      "Factory continuousAngle"
+	      Ports		      [2, 1]
+	      Position		      [180, 21, 270, 74]
+	      SourceBlock	      "mblibv1/Utilities/Continuous Angle"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      rad		      "deg"
+	      rads		      "deg/s"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      Ports		      [1, 2]
+	      Position		      [140, 26, 145, 64]
+	      BackgroundColor	      "black"
+	      ShowName		      off
+	      Outputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator"
+	      Ports		      [1, 1]
+	      Position		      [445, 209, 475, 241]
+	      LimitOutput	      on
+	      UpperSaturationLimit    "Range_of_Ang_degr(2,1)"
+	      LowerSaturationLimit    "Range_of_Ang_degr(1,1)"
+	      IgnoreLimit	      off
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator1"
+	      Ports		      [1, 1]
+	      Position		      [380, 214, 410, 246]
+	      LimitOutput	      on
+	      UpperSaturationLimit    "200"
+	      LowerSaturationLimit    "-200"
+	      IgnoreLimit	      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "R1_Joint Actuator"
+	      Ports		      [1, 0, 0, 0, 0, 0, 1]
+	      Position		      [445, 30, 485, 70]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Act"
+"uator"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      ActuationStyle	      "Force"
+	      AngleUnits	      "deg"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPositionUnits      "m"
+	      VelocityUnits	      "m/s"
+	      AccelerationUnits	      "m/s^2"
+	      ForceUnits	      "N"
+	      TorqueUnits	      "N-m"
+	      ActiveIO		      "on"
+	      Width		      "1"
+	      ClassName		      "JointActuator"
+	      DialogClass	      "MechanicalActuatorBlock"
+	      Primitive		      "R1"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "R1_Joint Sensor"
+	      Ports		      [0, 1, 0, 0, 0, 1]
+	      Position		      [75, 25, 115, 65]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Sen"
+"sor"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      Muxed		      "on"
+	      Pose		      "off"
+	      Angle		      "on"
+	      AngleUnits	      "deg"
+	      ArcVelocity	      "on"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAcceleration	      "off"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPosition	      "on"
+	      CoordPositionUnits      "m"
+	      Velocity		      "off"
+	      VelocityUnits	      "m/s"
+	      Acceleration	      "off"
+	      AccelerationUnits	      "m/s^2"
+	      Quaternion	      "on"
+	      QuaternionDT	      "off"
+	      QuaternionDDT	      "off"
+	      QuaternionUnits	      "off"
+	      OutputVector	      "[ 1 1 ]"
+	      ActiveIO		      "on"
+	      Width		      "2"
+	      ClassName		      "JointSensor"
+	      DialogClass	      "MechanicalSensorBlock"
+	      Primitive		      "R1"
+	      Force		      "off"
+	      ForceUnits	      "N"
+	      Torque		      "off"
+	      TorqueUnits	      "N-m"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	      ReactionSensedSide      "Base"
+	      ReactionReferenceFrame  "Local (Body CS)"
+	      ReactionForce	      "off"
+	      ReactionForceUnits      "N"
+	      ReactionMoment	      "off"
+	      ReactionMomentUnits     "N-m"
+	    }
+	    Block {
+	      BlockType		      Display
+	      Name		      "Root_X_Angle_D"
+	      Ports		      [1]
+	      Position		      [370, 286, 515, 314]
+	      Format		      "long"
+	      Decimation	      "1"
+	      Lockdown		      off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [2, 1]
+	      Position		      [295, 40, 315, 60]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      Ports		      [2, 1]
+	      Position		      [395, 40, 415, 60]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum2"
+	      Ports		      [2, 1]
+	      Position		      [515, 150, 535, 170]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "X_Ang_Acc"
+	      Tag		      "Start_Open"
+	      Ports		      [1, 1]
+	      Position		      [310, 215, 340, 245]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-1000"
+	      gain		      "0"
+	      high		      "1000"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "X_C_Spring"
+	      Ports		      [1, 1]
+	      Position		      [345, 35, 375, 65]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-2"
+	      gain		      "-2"
+	      high		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "X_Dump_fi"
+	      Ports		      [1, 1]
+	      Position		      [210, 155, 240, 185]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-0.3"
+	      gain		      "-0.3"
+	      high		      "0"
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn1"
+	      Position		      [515, 43, 545, 57]
+	      Orientation	      "left"
+	      Port		      "1"
+	      Side		      "Right"
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn2"
+	      Position		      [15, 38, 45, 52]
+	      Port		      "2"
+	      Side		      "Left"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      Position		      [85, 153, 115, 167]
+	      Orientation	      "left"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out2"
+	      Position		      [450, 108, 480, 122]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out3"
+	      Position		      [90, 203, 120, 217]
+	      Orientation	      "left"
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Line {
+	      SrcBlock		      "R1_Joint Sensor"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "X_Dump_fi"
+	      SrcPort		      1
+	      Points		      [160, 0]
+	      DstBlock		      "Sum1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "X_Ang_Acc"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "X_C_Spring"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "X_C_Spring"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      Points		      [10, 0]
+	      Branch {
+		DstBlock		"Continuous Angle"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 175]
+		Branch {
+		  Points		  [0, 90]
+		  DstBlock		  "Root_X_Angle_D"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Out3"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Continuous Angle"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn1"
+	      SrcPort		      RConn1
+	      DstBlock		      "R1_Joint Actuator"
+	      DstPort		      RConn1
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn2"
+	      SrcPort		      RConn1
+	      DstBlock		      "R1_Joint Sensor"
+	      DstPort		      LConn1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      Points		      [5, 0]
+	      Branch {
+		Points			[10, 0]
+		DstBlock		"Continuous Angle"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 105]
+		Branch {
+		  Points		  [0, 10]
+		  DstBlock		  "X_Dump_fi"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Out1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      Points		      [5, 0]
+	      Branch {
+		DstBlock		"R1_Joint Actuator"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 65]
+		DstBlock		"Out2"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      DstBlock		      "Sum2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Integrator"
+	      SrcPort		      1
+	      Points		      [0, -65]
+	      DstBlock		      "Sum2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum2"
+	      SrcPort		      1
+	      Points		      [0, -70; -235, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Integrator1"
+	      SrcPort		      1
+	      Points		      [5, 0; 0, -5]
+	      DstBlock		      "Integrator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "X_Ang_Acc"
+	      SrcPort		      1
+	      DstBlock		      "Integrator1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Y_Rotation_Subs1"
+	  Ports			  [0, 3, 0, 0, 0, 1, 1]
+	  Position		  [305, 212, 345, 273]
+	  BackgroundColor	  "blue"
+	  TreatAsAtomicUnit	  off
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Y_Rotation_Subs1"
+	    Location		    [33, 477, 618, 714]
+	    Open		    on
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      Position		      [180, 110, 210, 140]
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Continuous Angle"
+	      Tag		      "Factory continuousAngle"
+	      Ports		      [2, 1]
+	      Position		      [200, 14, 260, 81]
+	      SourceBlock	      "mblibv1/Utilities/Continuous Angle"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      rad		      "deg"
+	      rads		      "deg/s"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      Ports		      [1, 2]
+	      Position		      [150, 21, 155, 59]
+	      BackgroundColor	      "black"
+	      ShowName		      off
+	      Outputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator"
+	      Ports		      [1, 1]
+	      Position		      [330, 109, 360, 141]
+	      LimitOutput	      on
+	      UpperSaturationLimit    "Range_of_Ang_degr(2,2)"
+	      LowerSaturationLimit    "Range_of_Ang_degr(1,2)"
+	      IgnoreLimit	      off
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator1"
+	      Ports		      [1, 1]
+	      Position		      [280, 109, 310, 141]
+	      LimitOutput	      on
+	      UpperSaturationLimit    "200"
+	      LowerSaturationLimit    "-200"
+	      IgnoreLimit	      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "R2_Joint Actuator"
+	      Ports		      [1, 0, 0, 0, 0, 0, 1]
+	      Position		      [425, 30, 465, 70]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Act"
+"uator"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      ActuationStyle	      "Force"
+	      AngleUnits	      "deg"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPositionUnits      "m"
+	      VelocityUnits	      "m/s"
+	      AccelerationUnits	      "m/s^2"
+	      ForceUnits	      "N"
+	      TorqueUnits	      "N-m"
+	      ActiveIO		      "on"
+	      Width		      "1"
+	      ClassName		      "JointActuator"
+	      DialogClass	      "MechanicalActuatorBlock"
+	      Primitive		      "R2"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "R2_Joint Sensor"
+	      Ports		      [0, 1, 0, 0, 0, 1]
+	      Position		      [80, 20, 120, 60]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Sen"
+"sor"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      Muxed		      "on"
+	      Pose		      "off"
+	      Angle		      "on"
+	      AngleUnits	      "deg"
+	      ArcVelocity	      "on"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAcceleration	      "off"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPosition	      "on"
+	      CoordPositionUnits      "m"
+	      Velocity		      "off"
+	      VelocityUnits	      "m/s"
+	      Acceleration	      "off"
+	      AccelerationUnits	      "m/s^2"
+	      Quaternion	      "on"
+	      QuaternionDT	      "off"
+	      QuaternionDDT	      "off"
+	      QuaternionUnits	      "off"
+	      OutputVector	      "[ 1 1 ]"
+	      ActiveIO		      "on"
+	      Width		      "2"
+	      ClassName		      "JointSensor"
+	      DialogClass	      "MechanicalSensorBlock"
+	      Primitive		      "R2"
+	      Force		      "off"
+	      ForceUnits	      "N"
+	      Torque		      "off"
+	      TorqueUnits	      "N-m"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	      ReactionSensedSide      "Base"
+	      ReactionReferenceFrame  "Local (Body CS)"
+	      ReactionForce	      "off"
+	      ReactionForceUnits      "N"
+	      ReactionMoment	      "off"
+	      ReactionMomentUnits     "N-m"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [2, 1]
+	      Position		      [280, 35, 300, 55]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      Ports		      [2, 1]
+	      Position		      [365, 40, 385, 60]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Y_Ang_Acc"
+	      Tag		      "Start_Open"
+	      Ports		      [1, 1]
+	      Position		      [230, 110, 260, 140]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-1000"
+	      gain		      "-1000"
+	      high		      "1000"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Y_C_Spring"
+	      Ports		      [1, 1]
+	      Position		      [320, 35, 350, 65]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-1"
+	      gain		      "-1"
+	      high		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Y_Dump_fi"
+	      Ports		      [1, 1]
+	      Position		      [210, 165, 240, 195]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-0.3"
+	      gain		      "-0.3"
+	      high		      "0"
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn1"
+	      Position		      [490, 43, 520, 57]
+	      Orientation	      "left"
+	      Port		      "1"
+	      Side		      "Right"
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn2"
+	      Position		      [25, 33, 55, 47]
+	      Port		      "2"
+	      Side		      "Left"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      Position		      [70, 153, 100, 167]
+	      Orientation	      "left"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out2"
+	      Position		      [445, 128, 475, 142]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out3"
+	      Position		      [70, 98, 100, 112]
+	      Orientation	      "left"
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Line {
+	      SrcBlock		      "R2_Joint Sensor"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      Points		      [0, 15; 15, 0]
+	      Branch {
+		DstBlock		"Continuous Angle"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[-5, 0; 0, 95]
+		Branch {
+		  Points		  [0, 20]
+		  DstBlock		  "Y_Dump_fi"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Out1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Y_Dump_fi"
+	      SrcPort		      1
+	      Points		      [130, 0]
+	      DstBlock		      "Sum1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      Points		      [5, 0]
+	      Branch {
+		DstBlock		"R2_Joint Actuator"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 85]
+		DstBlock		"Out2"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "Y_Ang_Acc"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "Y_C_Spring"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Y_C_Spring"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      Branch {
+		DstBlock		"Continuous Angle"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 75]
+		DstBlock		"Out3"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Continuous Angle"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn1"
+	      SrcPort		      RConn1
+	      Points		      [0, 0]
+	      DstBlock		      "R2_Joint Actuator"
+	      DstPort		      RConn1
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn2"
+	      SrcPort		      RConn1
+	      DstBlock		      "R2_Joint Sensor"
+	      DstPort		      LConn1
+	    }
+	    Line {
+	      SrcBlock		      "Integrator"
+	      SrcPort		      1
+	      Points		      [0, -40; -75, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Y_Ang_Acc"
+	      SrcPort		      1
+	      DstBlock		      "Integrator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Integrator1"
+	      SrcPort		      1
+	      DstBlock		      "Integrator"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Z_Rotation_Subs"
+	  Ports			  [0, 3, 0, 0, 0, 1, 1]
+	  Position		  [25, 212, 65, 273]
+	  BackgroundColor	  "green"
+	  TreatAsAtomicUnit	  off
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Z_Rotation_Subs"
+	    Location		    [7, 274, 616, 521]
+	    Open		    on
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      Position		      [180, 120, 210, 150]
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Continuous Angle"
+	      Tag		      "Factory continuousAngle"
+	      Ports		      [2, 1]
+	      Position		      [200, 17, 265, 88]
+	      SourceBlock	      "mblibv1/Utilities/Continuous Angle"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      rad		      "deg"
+	      rads		      "deg/s"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      Ports		      [1, 2]
+	      Position		      [150, 36, 155, 74]
+	      BackgroundColor	      "black"
+	      ShowName		      off
+	      Outputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator"
+	      Ports		      [1, 1]
+	      Position		      [345, 119, 375, 151]
+	      LimitOutput	      on
+	      UpperSaturationLimit    "Range_of_Ang_degr(2,3)"
+	      LowerSaturationLimit    "Range_of_Ang_degr(1,3)"
+	      IgnoreLimit	      off
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator1"
+	      Ports		      [1, 1]
+	      Position		      [290, 119, 320, 151]
+	      LimitOutput	      on
+	      UpperSaturationLimit    "200"
+	      LowerSaturationLimit    "-200"
+	      IgnoreLimit	      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Joint Sensor1"
+	      Ports		      [0, 1, 0, 0, 0, 1]
+	      Position		      [80, 35, 120, 75]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Sen"
+"sor"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      Muxed		      "on"
+	      Pose		      "off"
+	      Angle		      "on"
+	      AngleUnits	      "deg"
+	      ArcVelocity	      "on"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAcceleration	      "off"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPosition	      "on"
+	      CoordPositionUnits      "m"
+	      Velocity		      "off"
+	      VelocityUnits	      "m/s"
+	      Acceleration	      "off"
+	      AccelerationUnits	      "m/s^2"
+	      Quaternion	      "on"
+	      QuaternionDT	      "off"
+	      QuaternionDDT	      "off"
+	      QuaternionUnits	      "off"
+	      OutputVector	      "[ 1 1 ]"
+	      ActiveIO		      "on"
+	      Width		      "2"
+	      ClassName		      "JointSensor"
+	      DialogClass	      "MechanicalSensorBlock"
+	      Primitive		      "R3"
+	      Force		      "off"
+	      ForceUnits	      "N"
+	      Torque		      "off"
+	      TorqueUnits	      "N-m"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	      ReactionSensedSide      "Base"
+	      ReactionReferenceFrame  "Local (Body CS)"
+	      ReactionForce	      "off"
+	      ReactionForceUnits      "N"
+	      ReactionMoment	      "off"
+	      ReactionMomentUnits     "N-m"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "R3_Joint Actuator"
+	      Ports		      [1, 0, 0, 0, 0, 0, 1]
+	      Position		      [440, 30, 480, 70]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Act"
+"uator"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      ActuationStyle	      "Force"
+	      AngleUnits	      "deg"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPositionUnits      "m"
+	      VelocityUnits	      "m/s"
+	      AccelerationUnits	      "m/s^2"
+	      ForceUnits	      "N"
+	      TorqueUnits	      "N-m"
+	      ActiveIO		      "on"
+	      Width		      "1"
+	      ClassName		      "JointActuator"
+	      DialogClass	      "MechanicalActuatorBlock"
+	      Primitive		      "R3"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [2, 1]
+	      Position		      [280, 35, 300, 55]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      Ports		      [2, 1]
+	      Position		      [380, 40, 400, 60]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Z_Ang_Acc\n"
+	      Tag		      "Start_Open"
+	      Ports		      [1, 1]
+	      Position		      [235, 120, 265, 150]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-1000"
+	      gain		      "-1000"
+	      high		      "1000"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Z_C_Spring\n"
+	      Ports		      [1, 1]
+	      Position		      [320, 35, 350, 65]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-2"
+	      gain		      "-2"
+	      high		      "0"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Z_Dump_fi"
+	      Ports		      [1, 1]
+	      Position		      [210, 180, 240, 210]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-0.3"
+	      gain		      "-0.3"
+	      high		      "0"
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn1"
+	      Position		      [505, 43, 535, 57]
+	      Orientation	      "left"
+	      Port		      "1"
+	      Side		      "Right"
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn2"
+	      Position		      [25, 48, 55, 62]
+	      Port		      "2"
+	      Side		      "Left"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      Position		      [75, 148, 105, 162]
+	      Orientation	      "left"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out2"
+	      Position		      [480, 113, 510, 127]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out3"
+	      Position		      [80, 108, 110, 122]
+	      Orientation	      "left"
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	    }
+	    Line {
+	      SrcBlock		      "Joint Sensor1"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      Points		      [0, 0; 15, 0]
+	      Branch {
+		Points			[10, 0]
+		DstBlock		"Continuous Angle"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[-10, 0; 0, 90]
+		Branch {
+		  Points		  [0, 40]
+		  DstBlock		  "Z_Dump_fi"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Out1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Z_Dump_fi"
+	      SrcPort		      1
+	      Points		      [145, 0]
+	      DstBlock		      "Sum1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      Points		      [0, 0]
+	      Branch {
+		DstBlock		"R3_Joint Actuator"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 70]
+		DstBlock		"Out2"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      Points		      [0, 0]
+	      DstBlock		      "Z_Ang_Acc\n"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "Z_C_Spring\n"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Z_C_Spring\n"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, -10; 10, 0]
+	      Branch {
+		DstBlock		"Continuous Angle"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 80]
+		DstBlock		"Out3"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Continuous Angle"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn1"
+	      SrcPort		      RConn1
+	      DstBlock		      "R3_Joint Actuator"
+	      DstPort		      RConn1
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn2"
+	      SrcPort		      RConn1
+	      DstBlock		      "Joint Sensor1"
+	      DstPort		      LConn1
+	    }
+	    Line {
+	      SrcBlock		      "Integrator"
+	      SrcPort		      1
+	      Points		      [0, -35; -90, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Z_Ang_Acc\n"
+	      SrcPort		      1
+	      DstBlock		      "Integrator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Integrator1"
+	      SrcPort		      1
+	      DstBlock		      "Integrator"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn1"
+	  Position		  [540, 13, 570, 27]
+	  Orientation		  "left"
+	  Port			  "1"
+	  Side			  "Right"
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn2"
+	  Position		  [20, 13, 50, 27]
+	  Port			  "2"
+	  Side			  "Left"
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn3"
+	  Position		  [580, 48, 610, 62]
+	  Orientation		  "left"
+	  Port			  "3"
+	  Side			  "Right"
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn4"
+	  Position		  [540, 83, 570, 97]
+	  Orientation		  "left"
+	  Port			  "4"
+	  Side			  "Right"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  Position		  [500, 138, 530, 152]
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out2"
+	  Position		  [560, 298, 590, 312]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out3"
+	  Position		  [560, 358, 590, 372]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out4"
+	  Position		  [540, 418, 570, 432]
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  RConn1
+	  Points		  [185, 0]
+	  DstBlock		  "Body_01"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  RConn3
+	  Points		  [190, 0]
+	  DstBlock		  "Joint Sensor"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Conn1"
+	  SrcPort		  RConn1
+	  Points		  [0, 5]
+	  DstBlock		  "Body_01"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Conn2"
+	  SrcPort		  RConn1
+	  Points		  [0, 25]
+	  DstBlock		  "B01_Joint"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Conn4"
+	  SrcPort		  RConn1
+	  Points		  [0, -25]
+	  DstBlock		  "Body_01"
+	  DstPort		  RConn3
+	}
+	Line {
+	  SrcBlock		  "Joint Sensor"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  LConn2
+	  Points		  [-120, 0]
+	  DstBlock		  "Z_Rotation_Subs"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  LConn3
+	  Points		  [-50, 0]
+	  DstBlock		  "Z_Rotation_Subs"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  LConn4
+	  Points		  [-25, 0; 0, 165]
+	  DstBlock		  "X_Rotation_Subs"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  RConn2
+	  Points		  [5, 0; 0, 205]
+	  DstBlock		  "X_Rotation_Subs"
+	  DstPort		  RConn1
+	}
+	Line {
+	  SrcBlock		  "Z_Rotation_Subs"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 85]
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "X_Rotation_Subs"
+	  SrcPort		  1
+	  Points		  [55, 0; 0, 80]
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Out2"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint IC"
+	  SrcPort		  RConn1
+	  Points		  [-15, 0; 0, -40]
+	  DstBlock		  "B01_Joint"
+	  DstPort		  RConn4
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  LConn5
+	  Points		  [0, 85; 155, 0; 0, 75]
+	  DstBlock		  "Y_Rotation_Subs1"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B01_Joint"
+	  SrcPort		  RConn5
+	  Points		  [160, 0; 0, 180]
+	  DstBlock		  "Y_Rotation_Subs1"
+	  DstPort		  RConn1
+	}
+	Line {
+	  SrcBlock		  "Y_Rotation_Subs1"
+	  SrcPort		  1
+	  Points		  [50, 0; 0, 95]
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Body_01"
+	  SrcPort		  RConn2
+	  Points		  [0, 10]
+	  DstBlock		  "Conn3"
+	  DstPort		  RConn1
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "Out3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "X_Rotation_Subs"
+	  SrcPort		  2
+	  Points		  [90, 0; 0, 125]
+	  DstBlock		  "Mux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Y_Rotation_Subs1"
+	  SrcPort		  2
+	  Points		  [145, 0; 0, 130]
+	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Z_Rotation_Subs"
+	  SrcPort		  2
+	  Points		  [45, 0; 0, 140]
+	  DstBlock		  "Mux1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  DstBlock		  "Out4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "X_Rotation_Subs"
+	  SrcPort		  3
+	  Points		  [90, 0; 0, 170]
+	  DstBlock		  "Mux2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Y_Rotation_Subs1"
+	  SrcPort		  3
+	  Points		  [130, 0; 0, 175]
+	  DstBlock		  "Mux2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Z_Rotation_Subs"
+	  SrcPort		  3
+	  Points		  [45, 0; 0, 185]
+	  DstBlock		  "Mux2"
+	  DstPort		  3
+	}
+      }
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Body_01_XYZ_Angle_Vel"
+      Ports		      [3]
+      Position		      [630, 19, 660, 51]
+      Floating		      off
+      Location		      [6, 507, 441, 822]
+      Open		      off
+      NumInputPorts	      "3"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+      }
+      TimeRange		      "30"
+      YMin		      "-8e-005~-1~-1"
+      YMax		      "2e-005~1~1"
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Body_Root"
+      Ports		      [0, 1, 0, 0, 0, 1, 3]
+      Position		      [160, 33, 265, 182]
+      TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      MaskHideContents	      off
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"Body_Root"
+	Location		[244, 149, 1044, 518]
+	Open			on
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Reference
+	  Name			  "Joint Initial Condition"
+	  Ports			  [0, 0, 0, 0, 0, 0, 1]
+	  Position		  [340, 120, 380, 160]
+	  Orientation		  "left"
+	  SourceBlock		  "mblibv1/Sensors & \nActuators/Joint Initial"
+" Condition"
+	  SourceType		  "msb"
+	  ShowPortLabels	  on
+	  PhysicalDomain	  "mechanical"
+	  ClassName		  "InitialCondition"
+	  DialogClass		  "InitialConditionBlock"
+	  InitialConditions	  "P1$true$0$m$rad$Body_Rt_IVel(1)$m/s$rad/s#P"
+"2$true$0$m$rad$Body_Rt_IVel(2)$m/s$rad/s#P3$true$0$m$rad$Body_Rt_IVel(3)$m/s$"
+"rad/s#R1$true$Body_Rt_IPos(4)$m$deg$Body_Rt_IVel(4)$m/s$rad/s#R2$true$Body_Rt"
+"_IPos(5)$m$deg$Body_Rt_IVel(5)$m/s$rad/s#R3$true$Body_Rt_IPos(6)$m$deg$Body_R"
+"t_IVel(6)$m/s$rad/s#S$false$0$m$rad$0$m/s$rad/s"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Joint Sensor"
+	  Ports			  [0, 1, 0, 0, 0, 1]
+	  Position		  [435, 170, 475, 210]
+	  SourceBlock		  "mblibv1/Sensors & \nActuators/Joint Sensor"
+	  SourceType		  "msb"
+	  ShowPortLabels	  on
+	  PhysicalDomain	  "Mechanical"
+	  PortType		  "blob"
+	  Muxed			  "on"
+	  Pose			  "off"
+	  Angle			  "off"
+	  AngleUnits		  "deg"
+	  ArcVelocity		  "on"
+	  ArcVelocityUnits	  "deg/s"
+	  ArcAcceleration	  "off"
+	  ArcAccelerationUnits	  "deg/s^2"
+	  CoordPosition		  "on"
+	  CoordPositionUnits	  "m"
+	  Velocity		  "off"
+	  VelocityUnits		  "m/s"
+	  Acceleration		  "off"
+	  AccelerationUnits	  "m/s^2"
+	  Quaternion		  "on"
+	  QuaternionDT		  "off"
+	  QuaternionDDT		  "off"
+	  QuaternionUnits	  "off"
+	  OutputVector		  "[ 1 ]"
+	  ActiveIO		  "on"
+	  Width			  "1"
+	  ClassName		  "JointSensor"
+	  DialogClass		  "MechanicalSensorBlock"
+	  Primitive		  "R1"
+	  Force			  "off"
+	  ForceUnits		  "N"
+	  Torque		  "off"
+	  TorqueUnits		  "N-m"
+	  ReferenceFrame	  "Absolute (INERTIAL)"
+	  ReactionSensedSide	  "Base"
+	  ReactionReferenceFrame  "Local (Body CS)"
+	  ReactionForce		  "off"
+	  ReactionForceUnits	  "N"
+	  ReactionMoment	  "off"
+	  ReactionMomentUnits	  "N-m"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Joint Sensor1"
+	  Ports			  [0, 1, 0, 0, 0, 1]
+	  Position		  [335, 210, 375, 250]
+	  SourceBlock		  "mblibv1/Sensors & \nActuators/Joint Sensor"
+	  SourceType		  "msb"
+	  ShowPortLabels	  on
+	  PhysicalDomain	  "Mechanical"
+	  PortType		  "blob"
+	  Muxed			  "on"
+	  Pose			  "off"
+	  Angle			  "off"
+	  AngleUnits		  "deg"
+	  ArcVelocity		  "on"
+	  ArcVelocityUnits	  "deg/s"
+	  ArcAcceleration	  "off"
+	  ArcAccelerationUnits	  "deg/s^2"
+	  CoordPosition		  "on"
+	  CoordPositionUnits	  "m"
+	  Velocity		  "off"
+	  VelocityUnits		  "m/s"
+	  Acceleration		  "off"
+	  AccelerationUnits	  "m/s^2"
+	  Quaternion		  "on"
+	  QuaternionDT		  "off"
+	  QuaternionDDT		  "off"
+	  QuaternionUnits	  "off"
+	  OutputVector		  "[ 1 ]"
+	  ActiveIO		  "on"
+	  Width			  "1"
+	  ClassName		  "JointSensor"
+	  DialogClass		  "MechanicalSensorBlock"
+	  Primitive		  "R2"
+	  Force			  "off"
+	  ForceUnits		  "N"
+	  Torque		  "off"
+	  TorqueUnits		  "N-m"
+	  ReferenceFrame	  "Absolute (INERTIAL)"
+	  ReactionSensedSide	  "Base"
+	  ReactionReferenceFrame  "Local (Body CS)"
+	  ReactionForce		  "off"
+	  ReactionForceUnits	  "N"
+	  ReactionMoment	  "off"
+	  ReactionMomentUnits	  "N-m"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Joint Sensor2"
+	  Ports			  [0, 1, 0, 0, 0, 1]
+	  Position		  [335, 280, 375, 320]
+	  SourceBlock		  "mblibv1/Sensors & \nActuators/Joint Sensor"
+	  SourceType		  "msb"
+	  ShowPortLabels	  on
+	  PhysicalDomain	  "Mechanical"
+	  PortType		  "blob"
+	  Muxed			  "on"
+	  Pose			  "off"
+	  Angle			  "off"
+	  AngleUnits		  "deg"
+	  ArcVelocity		  "on"
+	  ArcVelocityUnits	  "deg/s"
+	  ArcAcceleration	  "off"
+	  ArcAccelerationUnits	  "deg/s^2"
+	  CoordPosition		  "on"
+	  CoordPositionUnits	  "m"
+	  Velocity		  "off"
+	  VelocityUnits		  "m/s"
+	  Acceleration		  "off"
+	  AccelerationUnits	  "m/s^2"
+	  Quaternion		  "on"
+	  QuaternionDT		  "off"
+	  QuaternionDDT		  "off"
+	  QuaternionUnits	  "off"
+	  OutputVector		  "[ 1 ]"
+	  ActiveIO		  "on"
+	  Width			  "1"
+	  ClassName		  "JointSensor"
+	  DialogClass		  "MechanicalSensorBlock"
+	  Primitive		  "R3"
+	  Force			  "off"
+	  ForceUnits		  "N"
+	  Torque		  "off"
+	  TorqueUnits		  "N-m"
+	  ReferenceFrame	  "Absolute (INERTIAL)"
+	  ReactionSensedSide	  "Base"
+	  ReactionReferenceFrame  "Local (Body CS)"
+	  ReactionForce		  "off"
+	  ReactionForceUnits	  "N"
+	  ReactionMoment	  "off"
+	  ReactionMomentUnits	  "N-m"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  Ports			  [3, 1]
+	  Position		  [530, 241, 535, 279]
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Root_Body"
+	  Ports			  [0, 0, 0, 0, 0, 1, 6]
+	  Position		  [470, 59, 555, 146]
+	  BackgroundColor	  "magenta"
+	  SourceBlock		  "mblibv1/Bodies/Body"
+	  SourceType		  "msb"
+	  PhysicalDomain	  "mechanical"
+	  SubClassName		  "Unknown"
+	  LeftPortType		  "workingframe"
+	  RightPortType		  "workingframe"
+	  LConnTagsString	  "CG"
+	  RConnTagsString	  "CS1|CS2|CS3|CS4|CS5|CS6"
+	  ClassName		  "Body"
+	  DialogClass		  "MechanicalBodyBlock"
+	  Mass			  "Body_Rt_Mass"
+	  MassUnits		  "kg"
+	  InertiaUnits		  "kg*m^2"
+	  Inertia		  "Body_Rt_Inertia"
+	  Shape			  "Cylinder"
+	  ShapeDims		  "[1 1]"
+	  ShapeUnits		  "m"
+	  ShapeUse		  "false"
+	  Density		  "1"
+	  DensityUnits		  "kg/m^3"
+	  DensityUse		  "false"
+	  CG			  "Left$CG$Body_Rt_IPos(1:3)$WORLD$WORLD$m$[0 "
+"0 0]$Euler X-Y-Z$deg$WORLD$true"
+	  WorkingFrames		  "Right$CS1$Body_Rt_Size$CG$CG$m$[0 0 0]$Eule"
+"r X-Y-Z$deg$WORLD$true#Right$CS2$[0 -Body_Rt_Size(2) 0]$CG$CG$m$[0 0 0]$Euler"
+" X-Y-Z$deg$WORLD$true#Right$CS3$[-0.4*Body_Rt_Size(2) Body_Rt_Size(2) 0]$CG$C"
+"G$m$[0 0 0]$Euler X-Y-Z$deg$WORLD$true#Right$CS4$[0.4*Body_Rt_Size(2) Body_Rt"
+"_Size(2) 0]$CG$CG$m$[0 0 0]$Euler X-Y-Z$deg$WORLD$true#Right$CS5$[0 Body_Rt_S"
+"ize(2) -0.2*Body_Rt_Size(2)]$CG$CG$m$[0 0 0]$Euler X-Y-Z$deg$WORLD$true#Right"
+"$CS6$-CM_loc_Rel_Rt$CG$CG$m$[0 0 0]$Euler X-Y-Z$deg$WORLD$true"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Root_Control"
+	  Ports			  [0, 0, 0, 0, 0, 1, 1]
+	  Position		  [170, 215, 230, 310]
+	  Orientation		  "down"
+	  NamePlacement		  "alternate"
+	  TreatAsAtomicUnit	  off
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Root_Control"
+	    Location		    [20, 491, 565, 723]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      Position		      [195, 100, 225, 130]
+	      Value		      "10"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      Ports		      [1, 2]
+	      Position		      [150, 31, 155, 69]
+	      BackgroundColor	      "black"
+	      ShowName		      off
+	      Outputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      Position		      [250, 35, 280, 65]
+	      Gain		      "-1"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Joint Actuator"
+	      Ports		      [1, 0, 0, 0, 0, 0, 1]
+	      Position		      [425, 25, 465, 65]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Act"
+"uator"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      ActuationStyle	      "Force"
+	      AngleUnits	      "deg"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPositionUnits      "m"
+	      VelocityUnits	      "m/s"
+	      AccelerationUnits	      "m/s^2"
+	      ForceUnits	      "N"
+	      TorqueUnits	      "N-m"
+	      ActiveIO		      "off"
+	      Width		      "1"
+	      ClassName		      "JointActuator"
+	      DialogClass	      "MechanicalActuatorBlock"
+	      Primitive		      "R1"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Joint Sensor1"
+	      Ports		      [0, 1, 0, 0, 0, 1]
+	      Position		      [80, 30, 120, 70]
+	      SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Sen"
+"sor"
+	      SourceType	      "msb"
+	      ShowPortLabels	      on
+	      PhysicalDomain	      "Mechanical"
+	      PortType		      "blob"
+	      Muxed		      "on"
+	      Pose		      "off"
+	      Angle		      "on"
+	      AngleUnits	      "deg"
+	      ArcVelocity	      "on"
+	      ArcVelocityUnits	      "deg/s"
+	      ArcAcceleration	      "off"
+	      ArcAccelerationUnits    "deg/s^2"
+	      CoordPosition	      "on"
+	      CoordPositionUnits      "m"
+	      Velocity		      "off"
+	      VelocityUnits	      "m/s"
+	      Acceleration	      "off"
+	      AccelerationUnits	      "m/s^2"
+	      Quaternion	      "on"
+	      QuaternionDT	      "off"
+	      QuaternionDDT	      "off"
+	      QuaternionUnits	      "off"
+	      OutputVector	      "[ 1 1 ]"
+	      ActiveIO		      "on"
+	      Width		      "2"
+	      ClassName		      "JointSensor"
+	      DialogClass	      "MechanicalSensorBlock"
+	      Primitive		      "R3"
+	      Force		      "off"
+	      ForceUnits	      "N"
+	      Torque		      "off"
+	      TorqueUnits	      "N-m"
+	      ReferenceFrame	      "Absolute (INERTIAL)"
+	      ReactionSensedSide      "Base"
+	      ReactionReferenceFrame  "Local (Body CS)"
+	      ReactionForce	      "off"
+	      ReactionForceUnits      "N"
+	      ReactionMoment	      "off"
+	      ReactionMomentUnits     "N-m"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Slider\nGain"
+	      Ports		      [1, 1]
+	      Position		      [270, 100, 300, 130]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "0"
+	      gain		      "0"
+	      high		      "15"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Slider\nGain1"
+	      Ports		      [1, 1]
+	      Position		      [210, 175, 240, 205]
+	      SourceBlock	      "simulink/Math\nOperations/Slider\nGain"
+	      SourceType	      "Slider Gain"
+	      ShowPortLabels	      on
+	      low		      "-0.02"
+	      gain		      "-0.02"
+	      high		      "0"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [2, 1]
+	      Position		      [315, 30, 335, 50]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      Ports		      [2, 1]
+	      Position		      [365, 35, 385, 55]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn1"
+	      Position		      [490, 38, 520, 52]
+	      Orientation	      "left"
+	      Port		      "1"
+	      Side		      "Right"
+	    }
+	    Block {
+	      BlockType		      PMIOPort
+	      Name		      "Conn2"
+	      Position		      [25, 43, 55, 57]
+	      Port		      "2"
+	      Side		      "Left"
+	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      Points		      [5, 0; 0, -10]
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Joint Sensor1"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      Points		      [75, 0]
+	      DstBlock		      "Gain"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      Points		      [5, 0; 0, 5]
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      Points		      [20, 0; 0, 130]
+	      DstBlock		      "Slider\nGain1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Slider\nGain1"
+	      SrcPort		      1
+	      Points		      [130, 0]
+	      DstBlock		      "Sum1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      DstBlock		      "Joint Actuator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      Points		      [0, 0]
+	      DstBlock		      "Slider\nGain"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Slider\nGain"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn1"
+	      SrcPort		      RConn1
+	      DstBlock		      "Joint Actuator"
+	      DstPort		      RConn1
+	    }
+	    Line {
+	      LineType		      "Connection"
+	      SrcBlock		      "Conn2"
+	      SrcPort		      RConn1
+	      DstBlock		      "Joint Sensor1"
+	      DstPort		      LConn1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Root_Joint"
+	  Ports			  [0, 0, 0, 0, 0, 4, 3]
+	  Position		  [260, 76, 310, 129]
+	  SourceBlock		  "mblibv1/Joints/Custom Joint"
+	  SourceType		  "msb"
+	  PhysicalDomain	  "mechanical"
+	  SubClassName		  "custom_joint"
+	  LeftPortType		  "blob"
+	  RightPortType		  "blob"
+	  LConnTagsString	  "__newl0|SA1|SA2|SA3"
+	  RConnTagsString	  "__newr0|SA1|SA2"
+	  NumSAPorts		  "5"
+	  CutJoint		  "off"
+	  MarkAsCut		  "off"
+	  Primitives		  "prismatic_prismatic_prismatic_revolute_revo"
+"lute_revolute"
+	  PrimitiveProps	  "P1$WORLD$[1 0 0]$prismatic#P2$WORLD$[0 1 0]"
+"$prismatic#P3$WORLD$[0 0 1]$prismatic#R1$WORLD$[1 0 0]$revolute#R2$WORLD$[0 1"
+" 0]$revolute#R3$WORLD$[0 0 1]$revolute"
+	  ClassName		  "Joint"
+	  DialogClass		  "JointBlock"
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn1"
+	  Position		  [595, 63, 625, 77]
+	  Orientation		  "left"
+	  Port			  "1"
+	  Side			  "Right"
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn2"
+	  Position		  [195, 73, 225, 87]
+	  Port			  "2"
+	  Side			  "Left"
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn3"
+	  Position		  [600, 103, 630, 117]
+	  Orientation		  "left"
+	  Port			  "3"
+	  Side			  "Right"
+	}
+	Block {
+	  BlockType		  PMIOPort
+	  Name			  "Conn4"
+	  Position		  [600, 138, 630, 152]
+	  Orientation		  "left"
+	  Port			  "4"
+	  Side			  "Right"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  Position		  [575, 253, 605, 267]
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Joint"
+	  SrcPort		  RConn2
+	  Points		  [0, 5; 95, 0]
+	  DstBlock		  "Joint Sensor"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Conn2"
+	  SrcPort		  RConn1
+	  DstBlock		  "Root_Joint"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Conn4"
+	  SrcPort		  RConn1
+	  DstBlock		  "Root_Body"
+	  DstPort		  RConn4
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Body"
+	  SrcPort		  RConn3
+	  Points		  [0, 15]
+	  DstBlock		  "Conn3"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Joint"
+	  SrcPort		  RConn1
+	  Points		  [95, 0; 0, 15]
+	  DstBlock		  "Root_Body"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Body"
+	  SrcPort		  RConn1
+	  Points		  [0, 5]
+	  DstBlock		  "Conn1"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Joint"
+	  SrcPort		  RConn3
+	  DstBlock		  "Joint Initial Condition"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Joint"
+	  SrcPort		  LConn3
+	  Points		  [-45, 0]
+	  DstBlock		  "Root_Control"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Joint"
+	  SrcPort		  LConn2
+	  Points		  [-5, 0; 0, 205]
+	  DstBlock		  "Joint Sensor2"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Root_Joint"
+	  SrcPort		  LConn4
+	  Points		  [0, 105]
+	  DstBlock		  "Joint Sensor1"
+	  DstPort		  LConn1
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Joint Sensor"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 60]
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Joint Sensor1"
+	  SrcPort		  1
+	  Points		  [65, 0; 0, 30]
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Joint Sensor2"
+	  SrcPort		  1
+	  Points		  [65, 0; 0, -30]
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+      }
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      Ports		      [1, 3]
+      Position		      [590, 71, 595, 109]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "3"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux1"
+      Ports		      [1, 3]
+      Position		      [570, 16, 575, 54]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "3"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Ground"
+      Ports		      [0, 0, 0, 0, 0, 1, 1]
+      Position		      [75, 90, 115, 130]
+      UserDataPersistent      on
+      UserData		      "DataTag0"
+      SourceBlock	      "mblibv1/Bodies/Ground"
+      SourceType	      "msb"
+      ShowPortLabels	      on
+      LeftPortType	      "env"
+      RightPortType	      "workingframe"
+      PhysicalDomain	      "Mechanical"
+      DialogClass	      "GroundBlock"
+      ClassName		      "Ground"
+      CoordPosition	      "[0 0 0]"
+      CoordPositionUnits      "m"
+      StateVectorMgrId	      "-1"
+      MachineId		      "[6 1]"
+      ShowEnvPort	      on
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Machine\nEnvironment"
+      Tag		      "Factory ground"
+      Ports		      [0, 0, 0, 0, 0, 0, 1]
+      Position		      [15, 100, 55, 120]
+      DialogController	      "MECH.DialogSource"
+      SourceBlock	      "mblibv1/Bodies/Machine\nEnvironment"
+      SourceType	      "Mechanical"
+      ShowPortLabels	      on
+      PortType		      "env"
+      PhysicalDomain	      "Mechanical"
+      ClassName		      "Environment"
+      DialogTemplateClass     "MECH.MachineEnvironment"
+      SyncWhenCopied	      "off"
+      Gravity		      "[0 0 0]"
+      GravityUnits	      "m/s^2"
+      GravityAsSignal	      off
+      Dimensionality	      "Auto-detect"
+      AnalysisType	      "Forward dynamics"
+      LinearAssemblyTolerance "1e-3"
+      LinearAssemblyToleranceUnits "m"
+      AngularAssemblyTolerance "1e-3"
+      AngularAssemblyToleranceUnits "rad"
+      ConstraintSolverType    "Stabilizing"
+      ConstraintRelTolerance  "1e-4"
+      ConstraintAbsTolerance  "1e-4"
+      UseRobustSingularityHandling off
+      StatePerturbationType   "Fixed"
+      PerturbationSize	      "1e-5"
+      VisualizeMachine	      on
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Root_XYZ_Ang_Vel"
+      Ports		      [1]
+      Position		      [355, 14, 385, 46]
+      Floating		      off
+      Location		      [702, 70, 1137, 309]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      TimeRange		      "60"
+      YMin		      "-600"
+      YMax		      "700"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Root_XYZ_Angle"
+      Ports		      [1]
+      Position		      [615, 134, 645, 166]
+      Floating		      off
+      Location		      [305, 597, 740, 836]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      TimeRange		      "10"
+      YMin		      "-90"
+      YMax		      "10"
+      SaveName		      "ScopeData4"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "XYZ_Torques"
+      Ports		      [3]
+      Position		      [630, 74, 660, 106]
+      Floating		      off
+      Location		      [443, 574, 852, 813]
+      Open		      off
+      NumInputPorts	      "3"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+      }
+      TimeRange		      "30"
+      YMin		      "1.01794~-1~-1"
+      YMax		      "1.01797~1~1"
+      SaveName		      "ScopeData3"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Machine\nEnvironment"
+      SrcPort		      RConn1
+      DstBlock		      "Ground"
+      DstPort		      LConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Ground"
+      SrcPort		      RConn1
+      DstBlock		      "Body_Root"
+      DstPort		      LConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Body_Root"
+      SrcPort		      RConn1
+      Points		      [135, 0]
+      DstBlock		      "Body_01"
+      DstPort		      LConn1
+    }
+    Line {
+      SrcBlock		      "Body_01"
+      SrcPort		      3
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      DstBlock		      "XYZ_Torques"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      DstBlock		      "XYZ_Torques"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      3
+      DstBlock		      "XYZ_Torques"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Body_01"
+      SrcPort		      2
+      Points		      [15, 0]
+      DstBlock		      "Demux1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      1
+      DstBlock		      "Body_01_XYZ_Angle_Vel"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      2
+      DstBlock		      "Body_01_XYZ_Angle_Vel"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      3
+      DstBlock		      "Body_01_XYZ_Angle_Vel"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Body_Root"
+      SrcPort		      1
+      Points		      [35, 0; 0, -25]
+      DstBlock		      "Root_XYZ_Ang_Vel"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Body_01"
+      SrcPort		      4
+      Points		      [30, 0; 0, 40]
+      DstBlock		      "Root_XYZ_Angle"
+      DstPort		      1
+    }
+  }
+}
+MatData {
+  NumRecords		  1
+  DataRecord {
+    Tag			    DataTag0
+    Data		    "  %)30     .    4     8    (    !          %    "
+"\"     $    :     0         0    &@   $)O9'E?4VAV7T1O=6)L95\\P-C(O1W)O=6YD   "
+"     "
+  }
+}
