@@ -6,6 +6,9 @@
 
 namespace st {
 
+    static const float ZERO_PRPBABILITY     = 0.000000001f;
+    static const float ZERO_LOG_PRPBABILITY = -1000.f;
+
     template<typename T>
     class BiGram {
     public:
@@ -14,7 +17,8 @@ namespace st {
 
         bool train(const DataVector& train_data);
 
-        float calcSequenceLogPrbability(DataVector& input_sequence);
+        float calcSequenceLogProbability      (const DataVector& input_sequence) const ;
+        float getElemLogProbabilityWithHistory(const ElemType& elem, const DataVector& history) const;
     private:
         std::map<ElemType, int>    m_elemMap;
 
@@ -36,8 +40,8 @@ namespace st {
         // adjust sizes of frequency table
         m_freqTable.resize(nDistValues);
         for (int strIdx = 0; strIdx < nDistValues; strIdx++) {
-            _FreqVector& tableStr = m_freqTable[strIdx];
-            tableStr.resize(nDistValues);
+            _FreqVector& tableRow = m_freqTable[strIdx];
+            tableRow.resize(nDistValues);
         }
 
         // calc frequesnces
@@ -48,9 +52,49 @@ namespace st {
     }
 
     template<typename T>
-    float BiGram<T>::calcSequenceLogPrbability(DataVector& input_sequence)
+    float BiGram<T>::calcSequenceLogProbability(const DataVector& input_sequence) const
     {
+        if (input_sequence.size() < 2) {
+            return ZERO_LOG_PROBABILITY;
+        }
+
+        float seq_prob = 0.f;
+        DataVector::iterator elem_iter = input_sequenc.end();        
+        elem_iter--;
+        for (; elem_iter != input_sequenc.begin(); elem_iter--) {
+            DataVector::iterator history_end_iter = elem_iter;
+            history_end_iter--;
+            DataVector history(input_sequence.begin(), history_end_iter);
+            seq_prob += getElemLogProbabilityWithHistory(*elem_iter, history);
+        }
+
+        return seq_prob;
+    }
+
+    template<typename T>
+    float BiGram<T>::getElemLogProbabilityWithHistory(const ElemType& elem, const DataVector& history)const
+    {
+        if (history.size() == 0) {
+            return ZERO_LOG_PROBABILITY;
+        }
+
+        std::map<ElemType, int>::const_iterator find_iter;
         
+        // find index of 'elem'
+        find_iter = m_elemMap.find(elem);
+        if (find_iter == m_elemMap.end()) {
+            return ZERO_LOG_PROBABILITY;
+        }
+        int rowIndex = find_iter->second;
+        
+        // find index of last in history
+        find_iter = m_elemMap.find(histoty.back());
+        if (find_iter == m_elemMap.end()) {
+            return ZERO_LOG_PROBABILITY;
+        }
+        int collIndex = find_iter->second;
+
+        return m_freqTable[rowIndex][collIndex];
     }
 
     template<typename T>
@@ -103,19 +147,19 @@ namespace st {
     void BiGram<T>::_normalizeProbalility(void)
     {
         unsigned int freqTableSize = m_freqTable.size();
-        for (int str_index = 0; str_index < freqTableSize; str_index++) {
+        for (int row_index = 0; row_index < freqTableSize; row_index++) {
             // calc summ of frequencies
-            float str_summ = 0.f;
+            float row_summ = 0.f;
             for (coll_index = 0; coll_index < freqTableSize; coll_index++) {
-                str_summ += m_freqTable[str_index][coll_index];
+                row_summ += m_freqTable[row_index][coll_index];
             }
             // normalize
             for (coll_index = 0; coll_index < freqTableSize; coll_index++) {
-                float value = m_freqTable[str_index][coll_index] / str_summ;
+                float value = m_freqTable[row_index][coll_index] / row_summ;
                 if (value > 0.00000001f) {
-                    m_freqTable[str_index][coll_index] = log(value);
+                    m_freqTable[row_index][coll_index] = log(value);
                 } else {
-                    m_freqTable[str_index][coll_index] = 0.f;
+                    m_freqTable[row_index][coll_index] = ZERO_LOG_PRPBABILITY;
                 }
             }
         }

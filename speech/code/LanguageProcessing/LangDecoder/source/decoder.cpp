@@ -37,9 +37,9 @@ namespace lang {
         }
 
         // calc size of file
-        fseek(fp, SEEK_END);
+        fseek(fp, 0, SEEK_END);
         unsigned int fileSize = ftell(fp);
-        fseek(fp, SEEK_SET);
+        fseek(fp, 0, SEEK_SET);
 
         // realloc storage vector
         unsigned int nElems = fileSize / sizeof(char);
@@ -49,7 +49,7 @@ namespace lang {
         unsigned int nChars = 0;
         while (!feof(fp)){
             unsigned char cur_c = static_cast<unsigned char>(fgetc(fp));    
-            data_out[nChars] = cur_c;
+            input_data[nChars] = cur_c;
             nChars++;
         }
 
@@ -64,7 +64,7 @@ namespace lang {
 
 
         // calc frequencies
-        for (std::vector<unsigned char>::iterator data_iter = file_data.begin(); data_iter != file_data.end(); data_iter++) {
+        for (std::vector<unsigned char>::const_iterator data_iter = file_data.begin(); data_iter != file_data.end(); data_iter++) {
             
         }
 
