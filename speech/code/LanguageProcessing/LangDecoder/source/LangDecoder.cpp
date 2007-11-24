@@ -2,6 +2,7 @@
 #include <string>
 
 #include "LangDecoder.h"
+#include "NGram.h"
 
 namespace glob {
     void assert(bool exp) 
@@ -25,6 +26,22 @@ bool testDecode1()
     lang::Decoder decoder;
     decoder.trainLanguage("file_rus2.txt", lang::Language_RUS);
     decoder.trainLanguage("file_eng2.txt", lang::Language_ENG);
+    return true;
+}
+
+bool testBiGram()
+{                             
+    {
+        st::BiGram<char> char_bg1;
+        std::vector<char> t1_train(1, 'a');
+        char_bg1.train(t1_train);
+        char_bg1.train(t1_train);
+        char_bg1.train(t1_train);
+        char_bg1.normalizeProbalility();
+        std::vector<char> t1_test(1, 'a');
+        glob::assert(char_bg1.calcSequenceLogProbability(t1_test) == 0.f);
+    }
+
     return true;
 }
 
@@ -55,8 +72,9 @@ bool testDecode1()
 
 int main(int argc, char* argv[])
 {
-    testEncode();
-    testDecode1();
+    //testEncode();
+    //testDecode1();
+    testBiGram();
 
     return 0;
 }
