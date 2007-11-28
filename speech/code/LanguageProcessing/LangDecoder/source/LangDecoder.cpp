@@ -32,15 +32,40 @@ bool testDecode1()
 bool testBiGram()
 {                             
     {
-        st::BiGram<char> char_bg1;
-        std::vector<char> t1_train(1, 'a');
-        char_bg1.train(t1_train);
-        char_bg1.train(t1_train);
-        char_bg1.train(t1_train);
-        char_bg1.normalizeProbalility();
-        std::vector<char> t1_test(1, 'a');
-        glob::assert(char_bg1.calcSequenceLogProbability(t1_test) == 0.f);
+        //st::BiGram<char> char_bg1;
+        //std::vector<char> t1_train(1, 'a');
+        //char_bg1.train(t1_train);
+        //char_bg1.train(t1_train);
+        //char_bg1.train(t1_train);
+        //char_bg1.normalizeProbalility();
+        //std::vector<char> t1_test(1, 'a');
+        //glob::assert(char_bg1.calcSequenceLogProbability(t1_test) == 1.f);
     }
+
+    {
+        st::BiGram<char> char_bg2;
+        std::vector<char> t2_train1(3, 'a');
+        char_bg2.train(t2_train1);
+        std::vector<char> t2_train2(3, 'b');
+        char_bg2.train(t2_train2);
+        char_bg2.normalizeProbalility();
+
+        std::vector<char> t2_test;
+        t2_test.push_back('a');
+        t2_test.push_back('a');
+        t2_test.push_back('a');
+        glob::assert(char_bg2.calcSequenceLogProbability(t2_test) == 1.f);
+        t2_test.clear();
+        t2_test.push_back('b');
+        t2_test.push_back('b');
+        t2_test.push_back('b');
+        glob::assert(char_bg2.calcSequenceLogProbability(t2_test) == 0.f);
+        t2_test.clear();
+        t2_test.push_back('a');
+        t2_test.push_back('b');
+        glob::assert(char_bg2.calcSequenceLogProbability(t2_test) == st::ZERO_LOG_PROBABILITY);
+    }
+
 
     return true;
 }

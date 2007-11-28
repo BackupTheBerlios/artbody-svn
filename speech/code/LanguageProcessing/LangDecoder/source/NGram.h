@@ -8,7 +8,7 @@
 namespace st {
 
     static const float ZERO_PROBABILITY     = 0.000000001f;
-    static const float ZERO_LOG_PROBABILITY = -1000.f;
+    static const float ZERO_LOG_PROBABILITY = 0.f;//-1000.f;
 
     template<typename T>
     class BiGram {
@@ -41,6 +41,21 @@ namespace st {
         void                       _processOneTrainElem   (const ElemType& elem, int elem_index, const DataVector& train_data);        
 
         float                      _getStartEndProbability(const DataVector& input_sequence) const;
+
+        // debug
+        void _printTable(const char* caption = "") {
+            printf("****** %s *******\n", caption);
+            int freqTableSize = static_cast<int>(m_freqTable.size());
+            for (int row_index = 0; row_index < freqTableSize; row_index++) {
+                // calc summ of frequencies            
+                for (int coll_index = 0; coll_index < freqTableSize; coll_index++) {
+                    printf("%4.3f   ", (float)m_freqTable[row_index][coll_index]);
+                }
+                printf("\n");
+            }
+            printf("*************\n");
+        }
+        // end debug
     };
 
     template<typename T>
@@ -58,6 +73,7 @@ namespace st {
     bool BiGram<T>::train(const DataVector& train_data)
     {
         // Correspond index value for each distinct element in data set
+        _printTable("before train");
         int nDistValues = _fillElemMap(train_data);
         
         // adjust sizes of frequency table
@@ -66,9 +82,12 @@ namespace st {
             _FreqVector& tableRow = m_freqTable[rowIdx];
             tableRow.resize(nDistValues);
         }
+        _printTable("after resize");
 
         // calc frequesnces
         _calcFrequencies(train_data);
+
+        _printTable("after train");
 
         return true;
     }
@@ -77,6 +96,11 @@ namespace st {
     void BiGram<T>::normalizeProbalility(void)
     {
         int freqTableSize = static_cast<int>(m_freqTable.size());
+        // debug
+        _printTable();
+        // end debug
+
+
         for (int row_index = 0; row_index < freqTableSize; row_index++) {
             // calc summ of frequencies
             float row_summ = 0.f;
@@ -87,12 +111,16 @@ namespace st {
             for (int coll_index = 0; coll_index < freqTableSize; coll_index++) {
                 float value = m_freqTable[row_index][coll_index] / row_summ;
                 if (value > 0.00000001f) {
-                    m_freqTable[row_index][coll_index] = log(value);
+                    m_freqTable[row_index][coll_index] = value; //log(value);
                 } else {
                     m_freqTable[row_index][coll_index] = ZERO_LOG_PROBABILITY;
                 }
             }
         }
+
+        // debug
+        _printTable();
+        // end debug
     }
 
     template<typename T>
@@ -102,18 +130,24 @@ namespace st {
             return ZERO_LOG_PROBABILITY;
         }
 
-        float seq_prob = 0.f;
-        DataVector::const_iterator elem_iter = input_sequence.end();        
-        elem_iter--;
+        float seq_prob = 1.f;
+        DataVector::const_iterator elem_iter = input_sequence.end() - 1;        
         for (; elem_iter != input_sequence.begin(); elem_iter--) {
-            DataVector::const_iterator history_end_iter = elem_iter;
-            history_end_iter--;
-            DataVector history(input_sequence.begin(), history_end_iter);
-            seq_prob += getElemLogProbabilityWithHistory(*elem_iter, history);
+            DataVector::const_iterator history_end_iter = elem_iter - 1;
+            /// 
+            if (history_end_iter != input_sequence.begin()) {
+                __asm int 3;
+            }
+            ///
+            DataVector history(input_sequence.begin(), elem_iter);
+            if (history.size() != 1) {
+                __asm int 3;
+            }
+            seq_prob *= getElemLogProbabilityWithHistory(*elem_iter, history);
         }
 
         // add probability of start and end of sequense
-        seq_prob += _getStartEndProbability(input_sequence);
+        seq_prob *= _getStartEndProbability(input_sequence);
 
         return seq_prob;
     }
@@ -153,7 +187,7 @@ namespace st {
         int nDistValues = static_cast<int>(m_elemIndexesMap.size()) + _SYS_ELEMS_MAX;
         for (DataVector::const_iterator data_iter = train_data.begin(); data_iter != train_data.end(); data_iter++) {
             const ElemType& elem = *data_iter;
-            if (m_elemIndexesMap.find(elem) != m_elemIndexesMap.end()) {
+            if (m_elemIndexesMap.find(elem) == m_elemIndexesMap.end()) {
                 // the new one
                 m_elemIndexesMap[elem] = nDistValues++;
             }
@@ -192,8 +226,11 @@ namespace st {
             } // if
         } // for
         // handle last elem
-        int prev_index = m_elemIndexesMap[*prev_iter];
-        m_freqTable[_SYS_ELEMS_END][prev_index]++;
+        const ElemType& train_elem = *prev_iter;
+        if (train_elem == elem) {
+            int prev_index = m_elemIndexesMap[train_elem];
+            m_freqTable[_SYS_ELEMS_END][prev_index]++;
+        }
     }    
 
     template<typename T>
@@ -214,7 +251,7 @@ namespace st {
 
         // handle end
         float endProb = 0.f;
-        find_iter = m_elemIndexesMap.find(*(--input_sequence.end()));
+        find_iter = m_elemIndexesMap.find(*(input_sequence.end() - 1));
         if (find_iter == m_elemIndexesMap.end()) {
             endProb = ZERO_LOG_PROBABILITY;
         } else {
@@ -222,7 +259,7 @@ namespace st {
             endProb = m_freqTable[_SYS_ELEMS_END][collIndex];
         }
         
-        return startProb + endProb;
+        return startProb * endProb;
     }
 
 } // namespace st
