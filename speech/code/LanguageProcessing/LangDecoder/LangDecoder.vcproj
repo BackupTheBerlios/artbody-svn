@@ -133,6 +133,9 @@
 				RelativePath=".\source\LangDecoder.h">
 			</File>
 			<File
+				RelativePath=".\source\mt.h">
+			</File>
+			<File
 				RelativePath=".\source\NGram.h">
 			</File>
 		</Filter>
