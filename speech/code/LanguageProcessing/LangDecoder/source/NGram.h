@@ -5,10 +5,12 @@
 #include <map>
 #include <math.h>
 
+#include "mt.h"
+
 namespace st {
 
-    static const float ZERO_PROBABILITY     = 0.000000001f;
-    static const float ZERO_LOG_PROBABILITY = 0.f;//-1000.f;
+    static const mt::Real ZERO_PROBABILITY     = mt::EPSILON;
+    static const mt::Real ZERO_LOG_PROBABILITY = -1000.0;
 
     template<typename T>
     class BiGram {
@@ -18,12 +20,12 @@ namespace st {
 
         BiGram();
 
-        bool train               (const DataVector& train_data);
+        bool train         (const DataVector& train_data);
         // normalize and calc probability logarithm
-        void normalizeProbalility(void);
+        void finishTraining(void);
 
-        float calcSequenceLogProbability      (const DataVector& input_sequence) const ;
-        float getElemLogProbabilityWithHistory(const ElemType& elem, const DataVector& history) const;
+        mt::Real calcSequenceLogProbability      (const DataVector& input_sequence) const ;
+        mt::Real getElemLogProbabilityWithHistory(const ElemType& elem, const DataVector& history) const;
     private:
         enum _SYS_ELEMS {
             _SYS_ELEMS_START = 0,
@@ -31,16 +33,16 @@ namespace st {
             _SYS_ELEMS_MAX
         };
 
-        std::map<ElemType, int>    m_elemIndexesMap;
+        std::map<ElemType, int>       m_elemIndexesMap;
 
-        typedef std::vector<float> _FreqVector;
-        std::vector<_FreqVector>   m_freqTable;
+        typedef std::vector<mt::Real> _FreqVector;
+        std::vector<_FreqVector>      m_freqTable;
 
-        int                        _fillElemMap           (const DataVector& train_data);
-        void                       _calcFrequencies       (const DataVector& train_data);
-        void                       _processOneTrainElem   (const ElemType& elem, int elem_index, const DataVector& train_data);        
+        int                           _fillElemMap           (const DataVector& train_data);
+        void                          _calcFrequencies       (const DataVector& train_data);
+        void                          _processOneTrainElem   (const ElemType& elem, int elem_index, const DataVector& train_data);        
 
-        float                      _getStartEndProbability(const DataVector& input_sequence) const;
+        mt::Real                      _getStartEndProbability(const DataVector& input_sequence) const;
 
         // debug
         void _printTable(const char* caption = "") {
@@ -72,8 +74,7 @@ namespace st {
     template<typename T>
     bool BiGram<T>::train(const DataVector& train_data)
     {
-        // Correspond index value for each distinct element in data set
-        _printTable("before train");
+        // Correspond index value for each distinct element in data set        
         int nDistValues = _fillElemMap(train_data);
         
         // adjust sizes of frequency table
@@ -81,79 +82,63 @@ namespace st {
         for (int rowIdx = 0; rowIdx < nDistValues; rowIdx++) {
             _FreqVector& tableRow = m_freqTable[rowIdx];
             tableRow.resize(nDistValues);
-        }
-        _printTable("after resize");
+        }        
 
         // calc frequesnces
-        _calcFrequencies(train_data);
-
-        _printTable("after train");
+        _calcFrequencies(train_data);        
 
         return true;
     }
 
     template<typename T>
-    void BiGram<T>::normalizeProbalility(void)
+    void BiGram<T>::finishTraining(void)
     {
         int freqTableSize = static_cast<int>(m_freqTable.size());
-        // debug
-        _printTable();
-        // end debug
-
 
         for (int row_index = 0; row_index < freqTableSize; row_index++) {
             // calc summ of frequencies
-            float row_summ = 0.f;
+            mt::Real row_summ = 0.f;
             for (int coll_index = 0; coll_index < freqTableSize; coll_index++) {
                 row_summ += m_freqTable[row_index][coll_index];
             }
             // normalize
             for (int coll_index = 0; coll_index < freqTableSize; coll_index++) {
-                float value = m_freqTable[row_index][coll_index] / row_summ;
-                if (value > 0.00000001f) {
-                    m_freqTable[row_index][coll_index] = value; //log(value);
+                mt::Real value = m_freqTable[row_index][coll_index] / row_summ;
+                if (value > ZERO_PROBABILITY) {
+                    m_freqTable[row_index][coll_index] = log(value);
                 } else {
                     m_freqTable[row_index][coll_index] = ZERO_LOG_PROBABILITY;
                 }
             }
         }
 
-        // debug
-        _printTable();
-        // end debug
     }
 
     template<typename T>
-    float BiGram<T>::calcSequenceLogProbability(const DataVector& input_sequence) const
+    mt::Real BiGram<T>::calcSequenceLogProbability(const DataVector& input_sequence) const
     {
         if (input_sequence.size() == 0) {
             return ZERO_LOG_PROBABILITY;
         }
 
-        float seq_prob = 1.f;
+        mt::Real seq_prob = 0.f;
         DataVector::const_iterator elem_iter = input_sequence.end() - 1;        
         for (; elem_iter != input_sequence.begin(); elem_iter--) {
-            DataVector::const_iterator history_end_iter = elem_iter - 1;
-            /// 
-            if (history_end_iter != input_sequence.begin()) {
-                __asm int 3;
-            }
-            ///
+            DataVector::const_iterator history_end_iter = elem_iter - 0;
+
             DataVector history(input_sequence.begin(), elem_iter);
-            if (history.size() != 1) {
-                __asm int 3;
-            }
-            seq_prob *= getElemLogProbabilityWithHistory(*elem_iter, history);
+
+            seq_prob += getElemLogProbabilityWithHistory(*elem_iter, history);
         }
 
         // add probability of start and end of sequense
-        seq_prob *= _getStartEndProbability(input_sequence);
+        seq_prob += _getStartEndProbability(input_sequence);
 
         return seq_prob;
     }
 
     template<typename T>
-    float BiGram<T>::getElemLogProbabilityWithHistory(const ElemType& elem, const DataVector& history) const
+    mt::Real BiGram<T>::getElemLogProbabilityWithHistory(const ElemType& elem, const DataVector& history) const
     {
         if (history.size() == 0) {
             return ZERO_LOG_PROBABILITY;
@@ -234,13 +219,13 @@ namespace st {
     }    
 
     template<typename T>
-    float BiGram<T>::_getStartEndProbability(const DataVector& input_sequence) const
+    mt::Real BiGram<T>::_getStartEndProbability(const DataVector& input_sequence) const
     {
         std::map<ElemType, int>::const_iterator find_iter;
         
         // handle start
         // find index of first elem
-        float startProb = 0.f;
+        mt::Real startProb = 0.f;
         find_iter = m_elemIndexesMap.find(*input_sequence.begin());
         if (find_iter == m_elemIndexesMap.end()) {
             startProb = ZERO_LOG_PROBABILITY;
@@ -250,7 +235,7 @@ namespace st {
         }
 
         // handle end
-        float endProb = 0.f;
+        mt::Real endProb = 0.f;
         find_iter = m_elemIndexesMap.find(*(input_sequence.end() - 1));
         if (find_iter == m_elemIndexesMap.end()) {
             endProb = ZERO_LOG_PROBABILITY;
@@ -259,7 +244,7 @@ namespace st {
             endProb = m_freqTable[_SYS_ELEMS_END][collIndex];
         }
         
-        return startProb * endProb;
+        return startProb + endProb;
     }
 
 } // namespace st
