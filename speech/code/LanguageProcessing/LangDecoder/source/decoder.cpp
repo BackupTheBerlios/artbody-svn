@@ -7,6 +7,34 @@
 
 namespace lang {
 
+    //
+    // Class lang::Decoder::_CharFreqIndex
+    //
+    Decoder::_CharFreqIndex::_CharFreqIndex()
+    {
+        // init chars' table
+        charFreq_index.resize(256);
+        for (unsigned char char_idx = 0; char_idx < 256; char_idx++) {
+            _CharDescr newElem(char_idx, 0);
+            m_charFreq_index[char_idx] = newElem;
+        }
+    }
+
+    void Decoder::_CharFreqIndex::putChar(unsigned char c)
+    {
+        _CharDescr& elem = m_charFreq_index[c];
+        elem.pair.second++;
+    }
+
+    void Decoder::_CharFreqIndex::sort(void)
+    {
+
+    }
+
+
+    //
+    // Class lang::Decoder
+    //
     Decoder::Decoder()
     {
         ;
