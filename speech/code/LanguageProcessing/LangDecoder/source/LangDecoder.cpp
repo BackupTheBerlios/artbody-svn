@@ -97,7 +97,7 @@ bool testBiGram()
 int main(int argc, char* argv[])
 {
     //testEncode();
-    //testDecode1();
+    testDecode1();
     testBiGram();
 
     return 0;

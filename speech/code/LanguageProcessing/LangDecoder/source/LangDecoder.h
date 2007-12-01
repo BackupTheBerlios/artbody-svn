@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "NGram.h"
+
 namespace lang {
 
 enum LanguageID {
@@ -36,9 +38,13 @@ public:
     LanguageID resolveLanguage(const std::string& file_in);
 private:
     struct _CharDescr {
-        _CharDescr(unsigned char c, int i) { pair.first = c; pair.second = i; }
+        _CharDescr(unsigned char c = 0, int i = 0) { pair.first = c; pair.second = i; }
         std::pair<unsigned char, int> pair;
-        bool operator <(_CharDescr& other) { return pair.second < other.pair.second; } 
+        
+        static bool compareByFreq(_CharDescr& a, _CharDescr& b)   { return a.pair.second > b.pair.second; }
+        static bool compareByChar(_CharDescr& a, _CharDescr& b)   { return bsCompareByChar(&a, &b) < 0; }
+        static int  bsCompareByChar(_CharDescr* a, _CharDescr* b) { return a->pair.first - b->pair.first; }
+        bool operator == (const _CharDescr& other) { return pair.first == other.pair.first; }
     };
 
     class _CharFreqIndex {
@@ -58,8 +64,9 @@ private:
     };
     _LangDescr m_trainedLanguages[Language_MAX];
 
-    bool _read          (const std::string& file_in, std::vector<unsigned char>& input_data);
-    void _fillFreqVector(_CharFreqIndex& index, const std::vector<unsigned char>& file_data);
+    bool _read              (const std::string& file_in, unsigned char*& file_data, unsigned int& data_len);
+    void _fillFreqVector    (_CharFreqIndex& index, const unsigned char* file_data, unsigned int data_len);
+    void _trainLanguageModel(_LangDescr& lang_descr, const unsigned char* file_data, unsigned int data_len);
 };
 
 } // namespace lang
