@@ -9,7 +9,7 @@
 namespace lang {
 
 enum LanguageID {
-    Language_ENG,
+    Language_ENG = 0,
     Language_RUS,
     Language_MAX
 };
@@ -35,7 +35,7 @@ public:
     Decoder();
 
     bool       trainLanguage  (const std::string& file_in, LanguageID language);
-    LanguageID resolveLanguage(const std::string& file_in);
+    LanguageID resolveLanguage(const std::string& file_in);    
 private:
     struct _CharDescr {
         _CharDescr(unsigned char c = 0, int i = 0) { pair.first = c; pair.second = i; }
@@ -53,7 +53,8 @@ private:
         void putChar(unsigned char c);
         void sort   (void);
 
-        int getCharIndex(unsigned char c);
+        int           getCharIndex(unsigned char c);
+        unsigned char getIndexChar(int index) const { return m_charFreq_index[index].pair.first; }
     private:
         std::vector<_CharDescr> m_charFreq_index;               
     };
@@ -64,9 +65,10 @@ private:
     };
     _LangDescr m_trainedLanguages[Language_MAX];
 
-    bool _read              (const std::string& file_in, unsigned char*& file_data, unsigned int& data_len);
-    void _fillFreqVector    (_CharFreqIndex& index, const unsigned char* file_data, unsigned int data_len);
-    void _trainLanguageModel(_LangDescr& lang_descr, const unsigned char* file_data, unsigned int data_len);
+    bool        _read                        (const std::string& file_in, unsigned char*& file_data, unsigned int& data_len);
+    void        _fillFreqVector              (_CharFreqIndex& index, const unsigned char* file_data, unsigned int data_len);
+    void        _trainLanguageModel          (_LangDescr& lang_descr, const unsigned char* file_data, unsigned int data_len);
+    mt::Real    _calcInputProbabilityWithLang(st::BiGram<int>& testModel, _CharFreqIndex& encodedIndex, const unsigned char* file_data, unsigned int data_len);
 };
 
 } // namespace lang

@@ -38,15 +38,6 @@ namespace lang {
         }
 
         std::sort(m_charFreq_index.begin(), m_charFreq_index.end(), _CharDescr::compareByChar);
-
-        // debug
-        for (unsigned int elem_idx = 0; elem_idx < index_size; elem_idx++) {
-            if (m_charFreq_index[elem_idx].pair.second > 255) {
-                __asm int 3;
-            }
-        }
-        // end of debug
-
     }
 
     int Decoder::_CharFreqIndex::getCharIndex(unsigned char c)
@@ -60,7 +51,7 @@ namespace lang {
 //        if (p_char_descr != NULL) {
 //            return p_char_descr->pair.second;
 //        }
-        std::vector<_CharDescr>::iterator find_iter = find(m_charFreq_index.begin(), m_charFreq_index.end(), char_to_find);
+        std::vector<_CharDescr>::const_iterator find_iter = find(m_charFreq_index.begin(), m_charFreq_index.end(), char_to_find);
         if (find_iter != m_charFreq_index.end()) {
             return find_iter->pair.second;
         }
@@ -95,6 +86,37 @@ namespace lang {
         delete [] file_data;
 
         return true;
+    }
+
+    LanguageID Decoder::resolveLanguage(const std::string& file_in)
+    {
+        unsigned char* file_data = NULL;
+        unsigned int data_len = 0;
+        // read file data 
+        if (!_read(file_in, file_data, data_len)) {
+            return Language_MAX;
+        }
+        // calculate frequency distribution
+        _CharFreqIndex encodedIndex;
+        _fillFreqVector(encodedIndex, file_data, data_len);
+
+        // resolve language
+        LanguageID bestLangId;
+        mt::Real bestLangProb;
+        for (int langId = 0; langId < Language_MAX; langId++) {            
+            st::BiGram<int>& testLangModel = m_trainedLanguages[langId].langModel;
+            mt::Real langLogProb = _calcInputProbabilityWithLang(testLangModel, encodedIndex, file_data, data_len);
+            if (langId == 0) {
+                bestLangId = static_cast<LanguageID>(langId);
+                bestLangProb = langLogProb;
+            } else {
+                if (langLogProb > bestLangProb) {
+                    bestLangId = static_cast<LanguageID>(langId);
+                    bestLangProb = langLogProb;
+                }
+            }
+        }
+        return bestLangId;
     }
 
     //
@@ -163,6 +185,29 @@ namespace lang {
         }
 
         lang_descr.langModel.finishTraining();
+    }
+
+    mt::Real Decoder::_calcInputProbabilityWithLang(st::BiGram<int>& testModel, _CharFreqIndex& encodedIndex, const unsigned char* file_data, unsigned int data_len)
+    {
+        unsigned char space_sym = encodedIndex.getIndexChar(0);
+
+        mt::Real input_prob = 0.f;
+        std::vector<int> one_word_vect;
+        for (unsigned int data_elem_idx = 0; data_elem_idx < data_len; data_elem_idx++) {            
+            unsigned char data_elem = file_data[data_elem_idx];
+            // space is the delimiter of words
+            if (data_elem != space_sym) {
+                int elem_freq_nmb = encodedIndex.getCharIndex(data_elem);
+                one_word_vect.push_back(elem_freq_nmb);
+            } else {
+                if (one_word_vect.size() > 0) {
+                    input_prob += testModel.calcSequenceLogProbability(one_word_vect);
+                    one_word_vect.clear();
+                }
+            }
+        }
+
+        return input_prob;
     }
 
 } // namespace lang
