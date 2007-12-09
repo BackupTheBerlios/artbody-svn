@@ -1,23 +1,15 @@
 #include <stdio.h>
 #include <string>
 
+#include "glob.h"
 #include "mt.h"
 #include "LangDecoder.h"
 #include "NGram.h"
 
-namespace glob {
-    void assert(bool exp) 
-    {
-        if (!exp) {
-            __asm int 3;
-        }
-    }
-}
-
 bool testEncode()
 {
     lang::Encoder encoder;
-    encoder.encodeFile("file_rus1.txt", "file_rus1_c.txt");
+    encoder.encodeFile("russian.txt", "file_rus1_c.txt");
     encoder.encodeFile("file_eng1.txt", "file_eng1_c.txt");
     return true;
 }
