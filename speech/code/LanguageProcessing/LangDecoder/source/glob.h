@@ -1,9 +1,11 @@
 #ifndef __glob_h__
 #define __glob_h__
 
+#include <map>
+
 namespace glob {
 
-	void assert(bool exp) 
+	inline void assert(bool exp) 
     {
         if (!exp) {
             __asm int 3;
@@ -18,9 +20,10 @@ namespace glob {
 		void addRecord(const char* funcName, float execTime);
 		void flush	  (void);
 	private:
-        static ExecTimeStorer* m_ints;
+        static ExecTimeStorer* m_inst;
 
         ExecTimeStorer(const char* logFileName);
+
 		struct _FuncDescr {
 			int		nCalls;
 			float	totalExecTime;

@@ -16,7 +16,7 @@ bool testEncode()
 
 bool testDecode1()
 {
-    lang::Decoder decoder;
+    lang::Decoder decoder(lang::DecoderTypeVariance);
     decoder.trainLanguage("file_rus2.txt", lang::Language_RUS);
     decoder.trainLanguage("file_eng2.txt", lang::Language_ENG);
 

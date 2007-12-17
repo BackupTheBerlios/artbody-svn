@@ -8,6 +8,7 @@ namespace mt {
     typedef double Real;
 
     static const Real EPSILON = 1e-16;
+    static const Real INFINITY = 1e+16;
 
     inline bool isEqual(Real a, Real b)
     {

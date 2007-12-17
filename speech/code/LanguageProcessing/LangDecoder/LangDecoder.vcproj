@@ -181,6 +181,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\source\DecoderBiGram.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\source\DecoderVariance.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\source\encoder.cpp"
 				>
 			</File>
@@ -194,6 +202,14 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\source\DecoderBiGram.h"
+				>
+			</File>
+			<File
+				RelativePath=".\source\DecoderVariance.h"
+				>
+			</File>
 			<File
 				RelativePath=".\source\GaussDistr.h"
 				>
