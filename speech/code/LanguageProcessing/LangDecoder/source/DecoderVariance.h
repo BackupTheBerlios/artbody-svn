@@ -17,9 +17,14 @@ private:
     struct _LangDistr {
         bool init(const std::string& file_in);
         st::GaussDistribCalculator<mt::Real> distrib;
+
+        // debug
+        void _writeFreq(const std::string& file_in, std::vector<mt::Real>& freq_vect);
     };
 
     _LangDistr m_trainedLanguages[Language_MAX];    
+
+    static mt::Real z_distr_255_255_a_005;
 };
 
 } // namespace lang

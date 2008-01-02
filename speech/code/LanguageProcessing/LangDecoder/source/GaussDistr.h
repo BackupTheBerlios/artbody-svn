@@ -4,6 +4,8 @@
 #include <list>
 #include <vector>
 
+#include "mt.h"
+
 namespace st {
     template<typename T>
     class GaussDistribCalculator {
@@ -16,30 +18,21 @@ namespace st {
 
         bool  calcParams(const ElemVector& input_data);
 
-        float getMean     (void);
-        float getVariance (void);
+        mt::Real getMean       (void) { return m_mean; }
+        mt::Real getVariance   (void) { return m_variance; }
+        mt::Real getSelVariance(void) { return m_sel_variance; }
     private:
-        float m_mean;
-        float m_variance;
+        mt::Real m_mean;
+        mt::Real m_variance;
+        mt::Real m_sel_variance;
     };
 
     template<typename T>
     GaussDistribCalculator<T>::GaussDistribCalculator() :
-    m_mean(0.f),
-    m_variance(0.f)
+    m_mean(0.0),
+    m_variance(0.0),
+    m_sel_variance(0.0)
     {        
-    }
-
-    template<typename T>
-    float GaussDistribCalculator<T>::getMean(void)
-    {
-        return m_mean;
-    }
-
-    template<typename T>
-    float GaussDistribCalculator<T>::getVariance(void)
-    {
-        return m_variance;
     }
 
     template<typename T>
@@ -48,22 +41,24 @@ namespace st {
         ElemVector::const_iterator data_iter;
 
         // calc mean
-        float sum = 0.f;
+        mt::Real sum = 0.f;
         int   nElem = 0;
         for (data_iter = input_data.begin(); data_iter != input_data.end(); data_iter++, nElem++) {
-            sum += (float)(*data_iter);
+            sum += (mt::Real)(*data_iter);
         }
 
         m_mean = sum / nElem;
 
         // calc variance
-        float squared_err = 0.f;
+        mt::Real squared_err = 0.f;
         for (data_iter = input_data.begin(); data_iter != input_data.end(); data_iter++) {
-            float err = ((float)(*data_iter) - m_mean);
+            mt::Real err = ((mt::Real)(*data_iter) - m_mean);
             squared_err += err * err;
         }
 
         m_variance = squared_err / nElem;
+
+        m_sel_variance = squared_err / (nElem - 1);
 
         return true;
     }

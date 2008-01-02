@@ -39,7 +39,7 @@ Decoder::~Decoder()
 bool DecoderImpl::_read(const std::string& file_in, unsigned char*& file_data, unsigned int& data_len)
     {
         // open file
-        FILE* fp = fopen(file_in.c_str(), "r");
+        FILE* fp = fopen(file_in.c_str(), "rb");
         if (fp == NULL) {
             return false;
         }

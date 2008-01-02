@@ -10,17 +10,17 @@ bool testEncode()
 {
     lang::Encoder encoder;
     encoder.encodeFile("russian.txt", "file_rus1_c.txt");
-    encoder.encodeFile("file_eng1.txt", "file_eng1_c.txt");
+    encoder.encodeFile("english.txt", "file_eng1_c.txt");
     return true;
 }
 
 bool testDecode1()
 {
     lang::Decoder decoder(lang::DecoderTypeVariance);
-    decoder.trainLanguage("file_rus2.txt", lang::Language_RUS);
-    decoder.trainLanguage("file_eng2.txt", lang::Language_ENG);
+    decoder.trainLanguage("english.txt", lang::Language_RUS);
+    decoder.trainLanguage("file_eng1_c.txt", lang::Language_ENG);
 
-    lang::LanguageID testID = decoder.resolveLanguage("file_rus1_c.txt");
+    lang::LanguageID testID = decoder.resolveLanguage("file_eng1_c.txt");
     glob::assert(testID == lang::Language_RUS);
     return true;
 }
@@ -91,7 +91,7 @@ bool testBiGram()
 
 int main(int argc, char* argv[])
 {
-    //testEncode();
+    testEncode();
     testDecode1();
     testBiGram();
 

@@ -64,11 +64,19 @@ namespace lang {
 
     bool Encoder::_encodeBuffer()
     {
+        unsigned char THIRD_BIT_MASK = 0x4;
+        unsigned char SIXTH_BIT_MASK = 0x20;
         for (unsigned int char_pos = 0; char_pos < m_file_size; char_pos++) {
             unsigned char prev_value = m_file_buff[char_pos];
             unsigned char* p_char = m_file_buff + char_pos;
-
-            *p_char = prev_value ^ 0x55;
+            //unsigned char third_bit_value = prev_value & THIRD_BIT_MASK;
+            //unsigned char sixth_bit_value = prev_value & SIXTH_BIT_MASK;
+            //prev_value = prev_value & ~third_bit_value;
+            //prev_value = prev_value & ~sixth_bit_value;
+            //prev_value |= third_bit_value << 3;
+            //prev_value |= sixth_bit_value >> 3;
+            //*p_char = prev_value;
+            *p_char = prev_value ^ 0x53;
         }
 
         return true;
@@ -76,7 +84,7 @@ namespace lang {
 
     bool Encoder::_write(const std::string& file_out)
     {
-        FILE* fp = fopen(file_out.c_str(), "w");
+        FILE* fp = fopen(file_out.c_str(), "wb");
         if (fp == NULL) {
             return false;
         }       

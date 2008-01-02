@@ -15,6 +15,17 @@ namespace mt {
         return abs(a - b) < EPSILON;
     }
 
+    inline mt::Real clamp(const mt::Real& value, const mt::Real& a, const mt::Real& b)
+    {
+        if (value < a) {
+            return a;
+        }
+        if (value > b) {
+            return b;
+        }
+        return value;
+    }
+
 
 
 } // namespace mt

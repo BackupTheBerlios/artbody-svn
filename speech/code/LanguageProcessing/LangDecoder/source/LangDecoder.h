@@ -39,7 +39,7 @@ enum DecoderType {
 class DecoderImpl {
 public:
     virtual bool       trainLanguage  (const std::string& file_in, LanguageID language) = 0;
-    virtual LanguageID resolveLanguage(const std::string& file_in) = 0;
+    virtual LanguageID resolveLanguage(const std::string& file_in) = 0;    
 protected:
     static bool _read (const std::string& file_in, unsigned char*& file_data, unsigned int& data_len);
 };
