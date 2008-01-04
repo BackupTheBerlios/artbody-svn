@@ -7,6 +7,7 @@
 #include "LangDecoder.h"
 #include "DecoderBiGram.h"
 #include "DecoderVariance.h"
+#include "DecoderSpaceFreq.h"
 
 namespace lang {
 
@@ -23,7 +24,8 @@ Decoder::Decoder(DecoderType type)
             m_pImpl = new VarianceDecoder;
             break;
         case DecoderTypeSpaceFreq:
-            glob::assert(false);
+            m_pImpl = new SpaceFreqDecoder;
+            break;
     }
 }
 

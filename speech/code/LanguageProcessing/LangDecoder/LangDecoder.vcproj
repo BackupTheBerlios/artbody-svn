@@ -185,6 +185,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\source\DecoderSpaceFreq.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\source\DecoderVariance.cpp"
 				>
 			</File>
@@ -204,6 +208,10 @@
 			>
 			<File
 				RelativePath=".\source\DecoderBiGram.h"
+				>
+			</File>
+			<File
+				RelativePath=".\source\DecoderSpaceFreq.h"
 				>
 			</File>
 			<File
