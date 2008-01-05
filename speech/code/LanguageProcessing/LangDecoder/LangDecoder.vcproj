@@ -185,6 +185,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\source\DecoderCharsFreq.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\source\DecoderSpaceFreq.cpp"
 				>
 			</File>
@@ -208,6 +212,10 @@
 			>
 			<File
 				RelativePath=".\source\DecoderBiGram.h"
+				>
+			</File>
+			<File
+				RelativePath=".\source\DecoderCharsFreq.h"
 				>
 			</File>
 			<File
@@ -236,6 +244,10 @@
 			</File>
 			<File
 				RelativePath=".\source\NGram.h"
+				>
+			</File>
+			<File
+				RelativePath=".\source\Xi2.h"
 				>
 			</File>
 		</Filter>

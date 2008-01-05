@@ -34,6 +34,7 @@ enum DecoderType {
     DecoderTypeBiGram
     ,DecoderTypeVariance
     ,DecoderTypeSpaceFreq
+    ,DecoderTypeCharsFreq
 };
 
 class DecoderImpl {

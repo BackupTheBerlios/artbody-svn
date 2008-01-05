@@ -16,12 +16,14 @@ bool testEncode()
 
 bool testDecode1()
 {
-    lang::Decoder decoder(lang::DecoderTypeSpaceFreq);
+    lang::Decoder decoder(lang::DecoderTypeCharsFreq);
     decoder.trainLanguage("file_rus2.txt", lang::Language_RUS);
     decoder.trainLanguage("file_eng2.txt", lang::Language_ENG);
 
-    lang::LanguageID testID = decoder.resolveLanguage("file_rus1_c.txt");
+    lang::LanguageID testID = decoder.resolveLanguage("russian.txt");
     glob::assert(testID == lang::Language_RUS);
+    testID = decoder.resolveLanguage("file_eng1_c.txt");
+    glob::assert(testID == lang::Language_ENG);
     return true;
 }
 
