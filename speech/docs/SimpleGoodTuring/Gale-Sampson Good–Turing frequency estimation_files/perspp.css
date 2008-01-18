@@ -1,0 +1,12 @@
+BODY {
+	FONT-FAMILY: "Georgia", "Times", serif
+}
+BODY {
+	MARGIN-LEFT: 8%
+}
+BODY {
+	MARGIN-RIGHT: 8%
+}
+.framed {
+	BORDER-RIGHT: #da4649 solid; PADDING-RIGHT: 2px; BORDER-TOP: #da4649 solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 20px; BORDER-LEFT: #da4649 solid; PADDING-TOP: 2px; BORDER-BOTTOM: #da4649 solid
+}
