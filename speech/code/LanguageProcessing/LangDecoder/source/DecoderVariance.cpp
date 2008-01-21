@@ -39,7 +39,7 @@ namespace lang {
 
         delete [] file_data;
 
-        return true;
+       return true;
     }
 
     void VarianceDecoder::_LangDistr::_writeFreq(const std::string& file_in, std::vector<mt::Real>& freq_vect)
@@ -58,6 +58,7 @@ namespace lang {
         return;
     }
 
+
     //
     // Class lang::VarianceDecoder
     //
@@ -68,7 +69,7 @@ namespace lang {
 
     bool VarianceDecoder::trainLanguage(const std::string& file_in, LanguageID language)
     {
-        _LangDistr& inp_lang_distr = m_trainedLanguages[language];
+        _LangDistr& inp_lang_distr = m_trainedLanguages[language];        
         return inp_lang_distr.init(file_in);
     }
 
